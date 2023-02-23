@@ -24,9 +24,6 @@ module.exports = (sequelize) => {
     pasoAPaso:{
       type:DataTypes.STRING
     },
-    // image:{
-    //   type:DataTypes.STRING,
-    // },
     create:{
       type: DataTypes.BOOLEAN,
       defaultValue:true

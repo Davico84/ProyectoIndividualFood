@@ -1,0 +1,8 @@
+https://api.spoonacular.com/recipes/complexSearch?apiKey=f6d0761f42a04ca1bf04104c1146a0e1
+https://api.spoonacular.com/recipes/complexSearch?apiKey=f6d0761f42a04ca1bf04104c1146a0e1&addRecipeInformation=true
+
+https://api.spoonacular.com/recipes/782585/information?apiKey=f6d0761f42a04ca1bf04104c1146a0e1
+
+{API_KEY}
+
+https://api.spoonacular.com/recipes/complexSearch?number=100&apiKey=f6d0761f42a04ca1bf04104c1146a0e1&addRecipeInformation=true

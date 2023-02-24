@@ -42,8 +42,7 @@ const getRecipesByIdHandler= async(req,res)=>{
 // - [ ] __POST /recipes__:
 const postRecipeHandler= async(req,res)=>{
     const {nombre, resumen, comidaSaludable,pasoAPaso,TiposdeDieta}=req.body
-    if(!(nombre) || !(resumen) )res.status(400).json({error: 'Faltan datos obligatorios " Nombre / Resumen"'})
-
+    
     try {
         const newRecipe= await createRecipeCtrlr(nombre, resumen, comidaSaludable,pasoAPaso,TiposdeDieta)
         

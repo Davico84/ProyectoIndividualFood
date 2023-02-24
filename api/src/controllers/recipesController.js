@@ -23,19 +23,6 @@ const cleanArray= (array, vista)=>
                         }
 })
 
-const cleanArray2= (array, vista)=>
-         array.map(receta=>{
-            return {
-                    id: receta.id,
-                    nombre: receta.title,
-                    comidaSaludable: vista ==="DETALLE" ?receta.healthScore: "",
-                    resumen:vista ==="DETALLE" ?receta.summary: "",
-                    TiposdeDieta: vista ==="DETALLE" ?receta.diets.map(el=>el): "",
-                    //pasoAPaso: receta.analyzedInstructions.map( el => el) ,
-                    create: false
-                    }
-})
-
 const getAllRecipesCtrlr = async() => {
 
     
@@ -53,10 +40,11 @@ const getRecipeByWordCtrlr=async (word)=>{
     const resultBusquedaApi = resultraw.data.results.filter(receta=> receta.title.toUpperCase().includes( word.toUpperCase())); 
     const resultApiFormato =cleanArray(resultBusquedaApi,VISTADETALLE)
     
-    let resultBD=await Recipe.findAll( {include:DietType } );
+    let resultBD=await Recipe.findAll( {include:{model :DietType ,
+                                        attributes:['nombre']} });
     resultBD = resultBD.filter(receta=> receta.nombre.toUpperCase().includes( word.toUpperCase())); 
-    return [...resultBD]
-    // return [...resultApiFormato, ...resultBD];
+    
+    return [...resultApiFormato, ...resultBD];
 }
 
 const getRecipeByIdCtrlr=async (id,source)=>{
@@ -67,9 +55,10 @@ const getRecipeByIdCtrlr=async (id,source)=>{
         //    (await axios.get(`https://api.spoonacular.com/recipes/complexSearch?number=100&&apiKey=${API_KEY}`))
         //    .data
         //       const foundReceipId = result.data.results.filter((receta)=> receta.id.toString() === id.toString()); 
-        :  await Recipe.findByPk(id, {include:DietType});
-        
-    return source === 'API'? cleanArray([recipe],VISTADETALLE): recipe;
+        :  await Recipe.findByPk(id, {include: {model:DietType,
+                                               attributes:['nombre']}  });
+        //:  await Recipe.findByPk(id);
+    return source === 'API'? cleanArray([recipe],VISTADETALLE): recipe//.getDietType();
 }
 
 

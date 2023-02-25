@@ -4,7 +4,7 @@ const { DataTypes } = require('sequelize');
 module.exports = (sequelize) => {
   // defino el modelo
  
-  sequelize.define('recipe', {
+  sequelize.define('receta', {
     id: {
       type: DataTypes.UUID,
       primaryKey:true,
@@ -24,6 +24,9 @@ module.exports = (sequelize) => {
     pasoAPaso:{
       type:DataTypes.STRING
     },
+    // image:{
+    //   type:DataTypes.STRING,
+    // },
     create:{
       type: DataTypes.BOOLEAN,
       defaultValue:true

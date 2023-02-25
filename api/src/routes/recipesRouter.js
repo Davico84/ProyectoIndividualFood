@@ -2,16 +2,15 @@ const {Router}= require("express");
 
 const recipesRouter=Router();
 
-const { getAllRecipesHandler, 
-        getRecipeByWordHandler,
-        getRecipesByIdHandler,
+const { getRecipesByIdHandler,
+        getRecipesHandler,
         postRecipeHandler}= require ("../handlers/recipesHandlers")
 const {validatePostRecipe}= require("../middelware/validates")
 
 
-recipesRouter.get("/",getAllRecipesHandler);//verificar esto
+//recipesRouter.get("/",getAllRecipesHandler);//verificar esto
 
-recipesRouter.get("/word",getRecipeByWordHandler);
+recipesRouter.get("/",getRecipesHandler);
 
 recipesRouter.get("/:id", getRecipesByIdHandler)
 

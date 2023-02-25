@@ -1,33 +1,29 @@
-const { createRecipeCtrlr,getRecipeByIdCtrlr,getRecipeByWordCtrlr,getAllRecipesCtrlr } = require('../controllers/recipesController');
+const { createRecipeCtrlr,getRecipeByIdCtrlr,
+    getRecipeByWordCtrlr,getAllRecipesCtrlr } = require('../controllers/recipesController');
 
-//recibe todas las recetas
-const getAllRecipesHandler= async (req,res)=>{
-    try {
-        
-        const result = await getAllRecipesCtrlr();
-        res.status(200).json(result)
-    }catch (error) {
-        res.status(400).json({error:error.message})
-         }
-};
 
-//Obtener un listado de las recetas que contengan la palabra ingresada como query parameter
 //http://localhost:3001/recipes/word/?word=rice
-const getRecipeByWordHandler = async (req,res)=>{
-    try {
-        const {word}= req.query
-        const recipes= await getRecipeByWordCtrlr(word);
-        //console.log(recipes.length)
-        if(recipes.length>0) res.status(200).json(recipes)
-        else res.status(201).json({"msg":"La palabra buscada no obtuvo Resultados"})
-        
-    } catch (error) {
-        res.status(400).json({error:error.message})
-    }
+const getRecipesHandler= async (req,res)=>{
+    console.log("Entro By word / aALL");
+    const {word}= req.query
+    
+try {
+    const recipes= word?  await getRecipeByWordCtrlr(word)
+                       :  await getAllRecipesCtrlr()
+
+    if(recipes.length>0) res.status(200).json(recipes)
+    else res.status(200).json({"msg":"La palabra buscada no obtuvo Resultados"})
+    
+} catch (error) {
+    res.status(400).json({error:error.message})
 }
+}
+
 // - [ ] __GET /recipes/{idReceta}__:  //http://localhost:3001/recipes/716426
 const getRecipesByIdHandler= async(req,res)=>{
+    console.log("entro by ID");
     const {id}= req.params
+    console.log("el valor de id es:",id);
     const source= isNaN(id)? "BD" :"API"
     
     try {
@@ -52,5 +48,4 @@ const postRecipeHandler= async(req,res)=>{
     }
 }
 
-module.exports={getAllRecipesHandler,getRecipeByWordHandler,
-    getRecipesByIdHandler,postRecipeHandler}
+module.exports={ getRecipesByIdHandler,postRecipeHandler,getRecipesHandler}

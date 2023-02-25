@@ -1,4 +1,4 @@
-const {createDietTypeCtrlr} = require("../controllers/dietsControler")
+const {createDietTypeCtrlr} = require("../controllers/dietstypeControler")
 const {typesArr}= require("../db")
 
 

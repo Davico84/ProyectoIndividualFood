@@ -2,7 +2,7 @@ require('dotenv').config();
 const {  API_KEY  } = process.env;
 const axios= require("axios");
 const {Op } = require('sequelize');
-const {Recipe,DietType}= require("../db");
+const {Receta,TipoDeDieta}= require("../db");
 const VISTASIMPLE="SIMPLE";
 const VISTADETALLE="DETALLE";
 
@@ -11,26 +11,26 @@ const cleanArray= (array, vista)=>
             if (vista==="SIMPLE" )
                 return {    id: receta.id,
                             nombre: receta.title,
+                            resumen: receta.summary,
                             create: false
                         }
             else return {   id: receta.id,
                             nombre: receta.title,
-                            comidaSaludable: receta.healthScore,
                             resumen:receta.summary,
-                            TiposdeDieta: receta.diets.map(el=>el),
+                            comidaSaludable: receta.healthScore,
                             //pasoAPaso: receta.analyzedInstructions.map( el => el) ,
-                            create: false
+                            create: false,
+                            TipoDeDieta: receta.diets.map(el=>el),
                         }
 })
 
 const getAllRecipesCtrlr = async() => {
 
-    
     const resultraw = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?number=100&apiKey=${API_KEY}&addRecipeInformation=true`)
     
     const result =cleanArray(resultraw.data.results,VISTASIMPLE)
-    const resultBD=await Recipe.findAll({attributes:[ 'id', 'nombre', 'create']})
-   //console.log("entro x auqi", resultBD);
+    const resultBD=await Receta.findAll({attributes:[ 'id', 'nombre', 'resumen','create']})
+  
     return [...result, ...resultBD];
 }
 const getRecipeByWordCtrlr=async (word)=>{
@@ -40,45 +40,58 @@ const getRecipeByWordCtrlr=async (word)=>{
     const resultBusquedaApi = resultraw.data.results.filter(receta=> receta.title.toUpperCase().includes( word.toUpperCase())); 
     const resultApiFormato =cleanArray(resultBusquedaApi,VISTADETALLE)
     
-    let resultBD=await Recipe.findAll( {include:{model :DietType ,
-                                        attributes:['nombre']} });
-    resultBD = resultBD.filter(receta=> receta.nombre.toUpperCase().includes( word.toUpperCase())); 
+    // let resultBD=await Receta.findAll( {  include:{
+    //                                                 model: TipoDeDieta, attributes:['nombre'],
+    //                                                 through:{ 
+    //                                                         attributes:[]}}} );
+    // resultBD = resultBD.filter(receta=> receta.nombre.toUpperCase().includes( word.toUpperCase())); 
+    const resultBD = await Receta.findAll({where:{
+                                                nombre: { [Op.iLike]: `%${word}%` }}
+                                        , attributes:  {exclude:['PasoAPaso']}
+                                        ,include:{
+                                                model: TipoDeDieta, attributes:['nombre'],
+                                                through:{ attributes:[]}	
+                                        } });
     
-    return [...resultApiFormato, ...resultBD];
+   return [...resultApiFormato, ...resultBD];
+   
 }
 
 const getRecipeByIdCtrlr=async (id,source)=>{
-    const recipe = 
-        source ==='API'
-        ? (await axios.get(`https://api.spoonacular.com/recipes/${id}/information?apiKey=${API_KEY}`)) 
-        .data
-        //    (await axios.get(`https://api.spoonacular.com/recipes/complexSearch?number=100&&apiKey=${API_KEY}`))
-        //    .data
-        //       const foundReceipId = result.data.results.filter((receta)=> receta.id.toString() === id.toString()); 
-        :  await Recipe.findByPk(id, {include: {model:DietType,
-                                               attributes:['nombre']}  });
-        //:  await Recipe.findByPk(id);
-    return source === 'API'? cleanArray([recipe],VISTADETALLE): recipe//.getDietType();
+    
+    try {
+        const recipe = 
+            source ==='API'
+            ? (await axios.get(`https://api.spoonacular.com/recipes/${id}/information?apiKey=${API_KEY}`)) 
+            .data
+            //    (await axios.get(`https://api.spoonacular.com/recipes/complexSearch?number=100&&apiKey=${API_KEY}`))
+            //    .data
+            //       const foundReceipId = result.data.results.filter((receta)=> receta.id.toString() === id.toString()); 
+            :  await Receta.findByPk(id, {  include:{
+                                                    model: TipoDeDieta, attributes:['nombre'],
+                                                    through:{ attributes:[]}}});// con esto quito la tabla puente
+            return source === 'API'? cleanArray([recipe],VISTADETALLE): recipe//.getDietType();
+    } catch (error) {
+         return  {error:"el ID ingresado no obtuvo coincidencias en la API "}
+    }
+        
+    
 }
-
-
-
 //modo optimizado
 // const createRecipeCtrlr= async(nombre, resumen, comidaSaludable,pasoAPaso)=>  
-//                                 await Recipe.create({nombre, resumen, comidaSaludable,pasoAPaso});
-                           
+//                                 await Recipe.create({nombre, resumen, comidaSaludable,pasoAPaso});                      
 //modo detallado
 const createRecipeCtrlr= async(nombre, resumen, comidaSaludable,pasoAPaso,TiposdeDieta)=>{ 
-    const tipoDietasBD=await DietType.findAll();
-    if(tipoDietasBD.length===0) return {erro: "no exigen registros de Tipo de Dietas en la BD"}
-    const newRecipe= await Recipe.create({nombre, resumen, comidaSaludable,pasoAPaso});
+    const tipoDietasBD=await TipoDeDieta.findAll();
+    if(tipoDietasBD.length===0) return {error: "no exigen registros de Tipo de Dietas en la BD"}
+    const newRecipe= await Receta.create({nombre, resumen, comidaSaludable,pasoAPaso});
       
     // for (let index = 0; index < TiposdeDieta.length; index++) {
     //     const regtipodieta=await DietType.findAll({where: { nombre:  `${TiposdeDieta[index]}`}});
     //     if(regtipodieta.length>0) newRecipe.addDietType(regtipodieta)
     // }   
-    const regtipodieta=await DietType.findAll({where: { nombre:  TiposdeDieta}}) 
-    if(regtipodieta.length>0) newRecipe.addDietType(regtipodieta)
+    const regtipodieta=await TipoDeDieta.findAll({where: { nombre:  TiposdeDieta}}) 
+    if(regtipodieta.length>0) newRecipe.addTipoDeDieta(regtipodieta)
 
     return newRecipe
 }

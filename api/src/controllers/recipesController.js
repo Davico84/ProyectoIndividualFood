@@ -20,18 +20,32 @@ const cleanArray= (array, vista)=>
                             comidaSaludable: receta.healthScore,
                             //pasoAPaso: receta.analyzedInstructions.map( el => el) ,
                             create: false,
-                            TipoDeDieta: receta.diets.map(el=>el),
+                            tipoDeDieta: receta.diets.map(el=>el),
                         }
 })
 
-const getAllRecipesCtrlr = async() => {
+// const getAllRecipesCtrlr = async() => {
 
-    const resultraw = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?number=100&apiKey=${API_KEY}&addRecipeInformation=true`)
+//     const resultraw = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?number=100&apiKey=${API_KEY}&addRecipeInformation=true`)
     
-    const result =cleanArray(resultraw.data.results,VISTASIMPLE)
-    const resultBD=await Receta.findAll({attributes:[ 'id', 'nombre', 'resumen','create']})
+//     const result =cleanArray(resultraw.data.results,VISTASIMPLE)
+//     const resultBD=await Receta.findAll({attributes:[ 'id', 'nombre', 'resumen','create']})
   
-    return [...result, ...resultBD];
+//     return [...result, ...resultBD];
+// }
+const getAllRecipesCtrlr=async ()=>{
+    const resultraw = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?number=100&apiKey=${API_KEY}&addRecipeInformation=true`)
+   
+    //const resultBusquedaApi = resultraw.data.results.filter(receta=> receta.title.toUpperCase().includes( word.toUpperCase())); 
+    const resultApiFormato =cleanArray(resultraw.data.results,VISTADETALLE)
+    
+    const resultBD = await Receta.findAll({include:{
+                                                model: TipoDeDieta, attributes:['nombre'],
+                                                through:{ attributes:[]}	
+                                        } });
+    
+   return [...resultApiFormato, ...resultBD];
+   
 }
 const getRecipeByWordCtrlr=async (word)=>{
     const resultraw = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?number=100&apiKey=${API_KEY}&addRecipeInformation=true`)
@@ -39,7 +53,6 @@ const getRecipeByWordCtrlr=async (word)=>{
     //const resultBusquedaApi = resultraw.data.results.filter((receta)=> (receta.title.toUpperCase().search( word.toUpperCase())>=0)); 
     const resultBusquedaApi = resultraw.data.results.filter(receta=> receta.title.toUpperCase().includes( word.toUpperCase())); 
     const resultApiFormato =cleanArray(resultBusquedaApi,VISTADETALLE)
-    
     // let resultBD=await Receta.findAll( {  include:{
     //                                                 model: TipoDeDieta, attributes:['nombre'],
     //                                                 through:{ 

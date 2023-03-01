@@ -3,107 +3,104 @@ const {  API_KEY  } = process.env;
 const axios= require("axios");
 const {Op } = require('sequelize');
 const {Receta,TipoDeDieta}= require("../db");
-const VISTASIMPLE="SIMPLE";
-const VISTADETALLE="DETALLE";
 
-const cleanArray= (array, vista)=>
-         array.map(receta=>{
-            if (vista==="SIMPLE" )
-                return {    id: receta.id,
-                            nombre: receta.title,
-                            resumen: receta.summary,
-                            create: false
-                        }
-            else return {   id: receta.id,
+// const cleanArray= (array, vista)=>
+//          array.map(receta=>{
+//             if (vista==="SIMPLE" )
+//                 return {    id: receta.id,
+//                             nombre: receta.title,
+//                             resumen: receta.summary,
+//                             create: false
+//                         }
+//             else return {   id: receta.id,
+//                             nombre: receta.title,
+//                             resumen:receta.summary,
+//                             comidaSaludable: receta.healthScore,
+//                             //pasoAPaso: receta.analyzedInstructions.map( el => el) ,
+//                             create: false,
+//                             tipoDeDieta: receta.diets.map(el=>el),
+//                         }
+// })
+const cleanApi= (array)=>
+    array.map(receta=>{
+                 return {   id: receta.id,
                             nombre: receta.title,
                             resumen:receta.summary,
                             comidaSaludable: receta.healthScore,
                             //pasoAPaso: receta.analyzedInstructions.map( el => el) ,
                             create: false,
-                            tipoDeDieta: receta.diets.map(el=>el),
+                                    tipoDeDieta: receta.diets.map(el=>el),
                         }
-})
+                    })
 
-// const getAllRecipesCtrlr = async() => {
-
-//     const resultraw = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?number=100&apiKey=${API_KEY}&addRecipeInformation=true`)
-    
-//     const result =cleanArray(resultraw.data.results,VISTASIMPLE)
-//     const resultBD=await Receta.findAll({attributes:[ 'id', 'nombre', 'resumen','create']})
-  
-//     return [...result, ...resultBD];
-// }
 const getAllRecipesCtrlr=async ()=>{
     const resultraw = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?number=100&apiKey=${API_KEY}&addRecipeInformation=true`)
-   
     //const resultBusquedaApi = resultraw.data.results.filter(receta=> receta.title.toUpperCase().includes( word.toUpperCase())); 
-    const resultApiFormato =cleanArray(resultraw.data.results,VISTADETALLE)
+    const resultApiFormato =cleanApi(resultraw.data.results)
     
     const resultBD = await Receta.findAll({include:{
                                                 model: TipoDeDieta, attributes:['nombre'],
                                                 through:{ attributes:[]}	
                                         } });
-    
-   return [...resultApiFormato, ...resultBD];
-   
+    return [...resultApiFormato, ...resultBD];
 }
 const getRecipeByWordCtrlr=async (word)=>{
     const resultraw = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?number=100&apiKey=${API_KEY}&addRecipeInformation=true`)
-    //const resultraw = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?number=100&apiKey=${API_KEY}`)    
-    //const resultBusquedaApi = resultraw.data.results.filter((receta)=> (receta.title.toUpperCase().search( word.toUpperCase())>=0)); 
-    const resultBusquedaApi = resultraw.data.results.filter(receta=> receta.title.toUpperCase().includes( word.toUpperCase())); 
-    const resultApiFormato =cleanArray(resultBusquedaApi,VISTADETALLE)
+    //const resultraw = await axios.get(`https://api.spoonacular.com/recipes/complexSearch?number=100&apiKey=${API_KEY}`)
+    //const resultBusquedaApi = resultraw.data.results.filter((receta)=> (receta.title.toUpperCase().search( word.toUpperCase())>=0));
+    const resultBusquedaApi = resultraw.data.results.filter(receta=> receta.title.toUpperCase().includes( word.toUpperCase()));
+    const resultApiFormato =cleanApi(resultBusquedaApi)
     // let resultBD=await Receta.findAll( {  include:{
     //                                                 model: TipoDeDieta, attributes:['nombre'],
-    //                                                 through:{ 
+    //                                                 through:{
     //                                                         attributes:[]}}} );
-    // resultBD = resultBD.filter(receta=> receta.nombre.toUpperCase().includes( word.toUpperCase())); 
+    // resultBD = resultBD.filter(receta=> receta.nombre.toUpperCase().includes( word.toUpperCase()));
     const resultBD = await Receta.findAll({where:{
                                                 nombre: { [Op.iLike]: `%${word}%` }}
                                         , attributes:  {exclude:['PasoAPaso']}
                                         ,include:{
                                                 model: TipoDeDieta, attributes:['nombre'],
-                                                through:{ attributes:[]}	
+                                                through:{ attributes:[]}
                                         } });
-    
+
    return [...resultApiFormato, ...resultBD];
-   
+
 }
 
 const getRecipeByIdCtrlr=async (id,source)=>{
-    
+
     try {
-        const recipe = 
+        const recipe =
             source ==='API'
-            ? (await axios.get(`https://api.spoonacular.com/recipes/${id}/information?apiKey=${API_KEY}`)) 
+            ? (await axios.get(`https://api.spoonacular.com/recipes/${id}/information?apiKey=${API_KEY}`))
             .data
             //    (await axios.get(`https://api.spoonacular.com/recipes/complexSearch?number=100&&apiKey=${API_KEY}`))
             //    .data
-            //       const foundReceipId = result.data.results.filter((receta)=> receta.id.toString() === id.toString()); 
+            //       const foundReceipId = result.data.results.filter((receta)=> receta.id.toString() === id.toString());
             :  await Receta.findByPk(id, {  include:{
                                                     model: TipoDeDieta, attributes:['nombre'],
                                                     through:{ attributes:[]}}});// con esto quito la tabla puente
-            return source === 'API'? cleanArray([recipe],VISTADETALLE): recipe//.getDietType();
+            return source === 'API'? cleanApi([recipe]): recipe//.getDietType();
     } catch (error) {
          return  {error:"el ID ingresado no obtuvo coincidencias en la API "}
     }
-        
-    
+
+
 }
 //modo optimizado
-// const createRecipeCtrlr= async(nombre, resumen, comidaSaludable,pasoAPaso)=>  
-//                                 await Recipe.create({nombre, resumen, comidaSaludable,pasoAPaso});                      
+// const createRecipeCtrlr= async(nombre, resumen, comidaSaludable,pasoAPaso)=>
+//                                 await Recipe.create({nombre, resumen, comidaSaludable,pasoAPaso});
 //modo detallado
-const createRecipeCtrlr= async(nombre, resumen, comidaSaludable,pasoAPaso,TiposdeDieta)=>{ 
+const createRecipeCtrlr= async(nombre, resumen, comidaSaludable,pasoAPaso,TiposdeDieta)=>{
     const tipoDietasBD=await TipoDeDieta.findAll();
     if(tipoDietasBD.length===0) return {error: "no exigen registros de Tipo de Dietas en la BD"}
     const newRecipe= await Receta.create({nombre, resumen, comidaSaludable,pasoAPaso});
-      
+
     // for (let index = 0; index < TiposdeDieta.length; index++) {
     //     const regtipodieta=await DietType.findAll({where: { nombre:  `${TiposdeDieta[index]}`}});
     //     if(regtipodieta.length>0) newRecipe.addDietType(regtipodieta)
-    // }   
-    const regtipodieta=await TipoDeDieta.findAll({where: { nombre:  TiposdeDieta}}) 
+    // }
+    const regtipodieta=await TipoDeDieta.findAll({where: { nombre:  TiposdeDieta}})
     if(regtipodieta.length>0) newRecipe.addTipoDeDieta(regtipodieta)
 
     return newRecipe

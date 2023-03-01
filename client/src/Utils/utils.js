@@ -2,7 +2,7 @@
 const crearTextoHtml=(texto) =>{
     return {__html: texto};
   }
-const limpiaData=(array)=>
+const corregirFormatoData=(array)=>
   array.map(receta=>{
     if (receta.create ===false ){
         //console.log("ENTRE API");
@@ -28,5 +28,16 @@ const limpiaData=(array)=>
     }
     })
 
-
-export { crearTextoHtml,limpiaData};
+// const limpiaBD=(array)=>
+//   array.map(receta=>{
+//           return {   id: receta.id,
+//                     nombre: receta.nombre,
+//                     resumen:receta.resumen,
+//                     comidaSaludable: receta.comidaSaludable,
+//                     // pasoAPaso: receta.pasoAPaso.map( el => el) ,
+//                     create: receta.create,
+//                     tipoDeDieta: receta.tipoDeDieta.map(el=>el.nombre)
+//               }
+    
+//     })
+export { crearTextoHtml,corregirFormatoData};

@@ -4,7 +4,7 @@ const { createRecipeCtrlr,getRecipeByIdCtrlr,
 
 //http://localhost:3001/recipes/word/?word=rice
 const getRecipesHandler= async (req,res)=>{
-    console.log("Entro By word / aALL");
+    
     const {word}= req.query
     
 try {
@@ -21,9 +21,9 @@ try {
 
 // - [ ] __GET /recipes/{idReceta}__:  //http://localhost:3001/recipes/716426
 const getRecipesByIdHandler= async(req,res)=>{
-    console.log("entro by ID");
+    //console.log("entro by ID");
     const {id}= req.params
-    console.log("el valor de id es:",id);
+    //console.log("el valor de id es:",id);
     const source= isNaN(id)? "BD" :"API"
     
     try {

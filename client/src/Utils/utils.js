@@ -4,26 +4,26 @@ const crearTextoHtml=(texto) =>{
   }
 const corregirFormatoData=(array)=>
   array.map(receta=>{
-    if (receta.create ===false ){
-        //console.log("ENTRE API");
+    if (receta.create ===false ){//API
         return {    id: receta.id,
                     nombre: receta.nombre,
                     resumen:receta.resumen,
                     comidaSaludable: receta.comidaSaludable,
                     // pasoAPaso: receta.pasoAPaso.map( el => el) ,
                     create: receta.create,
-                    tipoDeDieta: receta.tipoDeDieta.map(el=>el)
+                    tipoDeDieta: receta.tipoDeDieta.map(el=>(' "'+el+'" ,')),
+                    imagen:receta.imagen
                 }
     }
-    else {
-     // console.log("ENTRE BD");
+    else {//BD
       return {   id: receta.id,
                     nombre: receta.nombre,
                     resumen:receta.resumen,
                     comidaSaludable: receta.comidaSaludable,
                     // pasoAPaso: receta.pasoAPaso.map( el => el) ,
                     create: receta.create,
-                    tipoDeDieta: receta.tipoDeDieta.map(el=>el.nombre)
+                    tipoDeDieta: receta.tipoDeDieta.map(el=>(' "'+el.nombre+'" ')),
+                     imagen:receta.imagen
               }
     }
     })

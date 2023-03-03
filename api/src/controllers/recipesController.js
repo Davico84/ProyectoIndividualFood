@@ -30,6 +30,7 @@ const cleanApi= (array)=>
                             //pasoAPaso: receta.analyzedInstructions.map( el => el) ,
                             create: false,
                                     tipoDeDieta: receta.diets.map(el=>el),
+                            imagen:receta.image
                         }
                     })
 

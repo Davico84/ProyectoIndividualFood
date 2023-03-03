@@ -1,0 +1,37 @@
+.main{
+    background-color: cadetblue;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+.filtros{
+    display: flex;
+    background-color: coral;
+    align-items: center;
+    justify-content: space-around;
+    align-content: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+.tarjetas{
+    display: flex;
+    background-color: yellow;
+    align-items: center;
+    justify-content: space-around;
+    align-content: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+.cabecera{
+    display: flex;
+    background-color: blue;
+}
+.detalle{
+    display: flex;
+    background-color: rgb(200, 255, 0);
+    flex-direction: column;
+
+
+}

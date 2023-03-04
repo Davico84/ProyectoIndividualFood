@@ -1,0 +1,210 @@
+
+.main{
+    display: flex;
+    color: black;
+    flex-direction: column;
+    justify-content: space-around;
+    align-content: space-around;
+    align-items: center;
+    border-radius: 8px;
+    padding: 10px;
+}
+.cabecera{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    background-color: #f7f7f7;
+    width: 1500px;
+    height: 629px;
+}
+.redes{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    /* background-color: mediumseagreen; */
+    align-items: center;
+    align-content: stretch;
+    height: 23%;
+    width: 29%;
+    left: 48px;
+    position: relative;
+    top: -49px;
+    
+}
+.imagen{
+    display: flex;
+    transform: rotate(20deg);
+}
+.ico{
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
+    border: solid 6px white;
+}.ico2{
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    border: solid 6px white;
+    margin: 8px;
+}
+.carrusel{
+    display: flex;
+    flex-direction: row;
+    /* flex-wrap: wrap; */
+    justify-content: space-around;
+    
+}
+.carrusel_f1{
+    transform: rotate(-3deg);
+    position: relative;
+    border-radius: 150px;
+    height: 280px;
+    width: 280px;
+    background-image: url(images/anticucho.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+   
+    border: solid #8d195f;
+    left: 102px;
+
+}
+.carrusel_f2{
+    transform: rotate(6deg);
+    position: relative;
+    border-radius: 150px;
+    height: 280px;
+    width: 280px;
+    background-image: url(images/cebiche.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: solid #8d195f;
+    left: 28px;
+    top: -67px;
+}
+.carrusel_f3{
+    transform: rotate(-3deg);
+    position: relative;
+    border-radius: 150px;
+    height: 280px;
+    width: 280px;
+    background-image: url(images/lomo.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+    border: solid #8d195f;
+    left: 64px;
+    top: -74px;
+}
+.carrusel_f4{
+    transform: rotate(19deg);
+    position: relative;
+    border-radius: 150px;
+    height: 280px;
+    width: 280px;
+    background-image: url(images/causa.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: solid #8d195f;
+    left: -12px;
+    top: 3px;
+}
+.carrusel_f5{
+   
+    position: relative;
+    border-radius: 8px;
+    height: 280px;
+    width: 280px;
+    border: solid white;
+}
+.cuerpo{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    
+    width: 1500px;
+    height: 510px;
+}
+.separ1{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    /* background-color: blueviolet; */
+    height: 150px;
+    font-size: 38px;
+}
+.separ2{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    
+    height: 350px;
+}
+.separ3{
+    display: flex;
+    flex-direction: row;
+  
+    height: 150px;
+    align-items: center;
+    justify-content: center;
+}
+.pie{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    background-color: green;
+    width: 1500px;
+    height: 350px;
+    position: relative;
+    bottom: 0px;
+}
+.titulo{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    /* background-color: navy; */
+    border-radius: 15px;
+    border: 1px solid black;
+}
+.img{
+    display: flex;
+    border: 2px;
+    border-radius: 8px;
+    background-image: url(images/receta.jpg);
+    background-repeat: no-repeat;
+    height: 1368px;
+    width: 1039px;
+    background-position: center;
+    padding: 1px;
+}
+.boton{
+    font-size: 46px;
+    font-weight: bolder;
+    border-radius: 5px;
+    padding: 5px;
+    color: #ebd9d9;
+    background-color: #e55225f0;
+    height: 110px;
+
+    font-family: system-ui;
+    width: 300px;
+    border-color: #e55225f0;
+}
+.viñetas{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    background: #cce5ff;
+    color: darkblue;
+    margin: 5px;
+}
+.tabla{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    font-size: 35px;
+}

@@ -1,5 +1,5 @@
 .main{
-    background-color: cadetblue;
+    /* background-color: cadetblue; */
     display: flex;
     flex-direction: column;
     align-content: center;
@@ -17,7 +17,7 @@
 }
 .tarjetas{
     display: flex;
-    background-color: yellow;
+    /* background-color: yellow; */
     align-items: center;
     justify-content: space-around;
     align-content: center;
@@ -30,7 +30,7 @@
 }
 .detalle{
     display: flex;
-    background-color: rgb(200, 255, 0);
+    /* background-color: rgb(200, 255, 0); */
     flex-direction: column;
 
 

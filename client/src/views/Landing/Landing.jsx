@@ -2,12 +2,14 @@ import face from "../../images/icons8-facebook.svg"
 import twit from "../../images/icons8-twitter-cuadrado.gif"
 import im from "../../images/icons8-instagram.gif"
 import viñeta from "../../images/bonbon-four-pointed-star-1.png"
+import henryIco from "../../images/henry.png"
+
 import { Link } from "react-router-dom"
 import style from "./Landing.module.css"
 const Landing =()=>{
     return (
         <div className>
-            <h1>RECETARIO.COM</h1>
+            <div className={style.titulo} >RECETARIO.COM</div>
             <div className={style.main}>
                  <div className={style.cabecera}>
                      <div className={style.redes}>
@@ -30,12 +32,7 @@ const Landing =()=>{
                         <div></div>
                         <div>
                             <h3>
-                                {/* <ul className={style.viñetas}>
-                                    <li >Acceso a cientos de Recetas</li>
-                                    <li >Busqueda de recetas por Nombre / ID</li>
-                                    <li >Creacion de Nuevas Recetas</li>
-                                </ul> */}
-                                <div className={style.tabla} >
+                                 <div className={style.tabla} >
                                     <div>
                                         <img className={style.ico2} src ={viñeta} alt="viñeta"/>
                                         Acceso a cientos de Recetas
@@ -49,19 +46,7 @@ const Landing =()=>{
                                         Creacion de Nuevas Recetas
                                     </div>
                                 </div>
-                                        {/* <td>  </td>
-                                        <td>Acceso a cientos de Recetas</td>
-                                    </tr>
-                                        <td> <img className={style.ico2} src ={viñeta} alt="viñeta"/> </td>
-                                        <td>Busqueda de recetas por Nombre</td>
-                                    <tr>
-
-                                    </tr>
-                                        <td> <img className={style.ico2} src ={viñeta} alt="viñeta"/> </td>
-                                        <td>Creacion de Nuevas Recetas</td>
-                                    <tr>
-                                    </tr> */}
-                               
+           
                             </h3>
                         </div>
                         <div></div>
@@ -74,7 +59,22 @@ const Landing =()=>{
                     </div>
                 </div>
                 <div className={style.pie}>
-                    <p> pie</p>
+                    <div className={style.sepPie1} >
+                        <div> 
+                            
+                        </div>                        
+                        <div>
+                        Copyright © 2023 Henry
+                        </div>
+                    </div>
+                    <div className={style.sepPie2} >
+                        <div>
+                            <img className={style.ico3} src ={henryIco} alt="viñeta"/>
+                        </div>
+                        <div><a href="https://github.com/Davico84/"> GitHub</a></div>
+                            
+                    </div>
+                    
                 </div>      
             </div>
 

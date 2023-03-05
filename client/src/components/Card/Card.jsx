@@ -5,11 +5,11 @@ const Card =(props)=>{
     return(
         <div className={style.card}>
             <div className={style.cabecera}>
-                <span> {props.nombre}</span>
+                {/* <span> {props.nombre}</span> */}
+                <div className={style.cabTitulo}> {props.nombre}</div>
+                <div  className={style.rayaRosa}></div>
+                <div  className={style.rayaNaranja}></div>
             </div>
-            <div  className={style.rayaRosa}></div>
-            <div  className={style.rayaNaranja}></div>
-
             <div className={style.detalle}>  
                 <div className={style.imagen }>
                     <img className={style.img_rec} src={props.imagen} alt={props.nombre}/>
@@ -21,10 +21,10 @@ const Card =(props)=>{
                                     <h2>Comida Saludable</h2>
                                 </p>
                             </div>
-                            <div className={style.valor}>
-                                <><h3>
+                            <div className={style.valor1}>
+                                <><h2>
                                     {props.comidaSaludable}
-                                </h3>
+                                </h2>
                                 </>
                             </div>
                         </div>
@@ -34,7 +34,7 @@ const Card =(props)=>{
                                     <h2>Dietas</h2>
                                 </p>
                             </div>
-                            <div className={style.valor}>
+                            <div className={style.valor2}>
                                 <span>
                                     <h3>{props.tipoDeDieta}</h3>
                                 </span>                  

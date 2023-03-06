@@ -8,11 +8,10 @@
 }
 .filtros{
     display: flex;
-    background-color: coral;
-    align-items: center;
-    justify-content: space-around;
+    
     align-content: center;
-    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
     flex-direction: row;
 }
 .tarjetas{
@@ -30,8 +29,9 @@
 }
 .detalle{
     display: flex;
-    /* background-color: rgb(200, 255, 0); */
     flex-direction: column;
-
+    align-items: center;
+    width: 1000px;
+    flex-wrap: nowrap;
 
 }

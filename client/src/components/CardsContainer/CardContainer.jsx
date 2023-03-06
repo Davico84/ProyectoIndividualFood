@@ -1,16 +1,26 @@
 import Card from "../Card/Card"
+import NoFoundCard from "../NoFoundCard/NoFoundCard"
 import style from "./CardContainer.module.css"
-import {corregirFormatoData} from  "../../Utils/utils"
-import { useSelector } from "react-redux"
-const CardContainer =()=>{
 
-	const recetas= useSelector(state=>state.recetas)
-	const dataLimpia= corregirFormatoData(recetas)
-	
-    return(
+const CardContainer =(props)=>{
+    
+    if(props.error!=="NULL")
+    {  
+    
+        return(
+            <div className={style.mainContainer}>
+                <NoFoundCard error={props.error}/> 
+            </div>
+        ) 
+    } 
+
+	return(
     <div className={style.mainContainer}>
         {
-				dataLimpia.map(receta=>{
+            props.recetas.slice(
+                    (props.pagina-1)*props.porPagina,
+                    (props.pagina-1)*props.porPagina+props.porPagina)
+                .map(receta=>{
                 return <Card
                             id={receta.id}
 							key={receta.id}

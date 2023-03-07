@@ -1,0 +1,100 @@
+.main{
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+   
+    border-radius: 8px;
+    margin: 5px;
+}
+.form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 600px;
+    border: solid orangered;
+    border-radius: 8px;
+}
+.titulo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 600px;
+    border: solid orangered;
+    border-radius: 8px;
+}
+.cajas{
+    display: flex;
+    margin: 10px;
+    /* background-color: coral; */
+    width: 97%;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+}
+.mainchks{
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    border-radius: 8px;
+    MARGIN: 5PX;
+    border: solid 2px orangered;
+    border-radius: 8px;
+}
+.chks{
+    display: flex;
+    align-items: stretch;
+    justify-content: space-evenly;
+    flex-direction: row;
+    margin: 10px;
+}
+.inputs{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 200px;
+}
+.labels{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 200px;
+    font-weight: 500;
+    font-size: 15px;
+}
+
+.mainerrors{
+    display: flex;
+    width: 170px;
+    flex-direction: column;
+    height: 200px;
+}
+
+.spamerror{
+    display: flex;
+    color: red;
+    font-weight: 700;
+    font-size: 10px;
+    margin: 3px;
+    padding: 0px;
+    justify-content: flex-start;
+}
+.intex{
+    display: flex;
+    height: 17px;
+}
+.bootom{
+    font-size: 30px;
+    font-weight: bolder;
+    border-radius: 5px;
+    padding: 5px;
+    color: #ebd9d9;
+    background-color: #e55225f0;
+    height: 50px;
+    font-family: system-ui;
+    width: 207px;
+    border-color: #e55225f0;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin: 5px;
+}

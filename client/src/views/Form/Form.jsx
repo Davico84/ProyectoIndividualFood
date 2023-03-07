@@ -1,6 +1,7 @@
 import styles from "./Form.module.css"
 import {useState}from "react"
 import axios from "axios"
+
 // import { getDietas} from "../../redux/actions"; 
 // import { useDispatch,useSelector } from "react-redux";
 // import { useEffect } from "react"; 
@@ -84,36 +85,60 @@ const submitHandler =(event)=>{
     .catch(err=>alert(err))
 }
 return(
-    <><h1>creacion de Receta</h1>
-        <form onSubmit={submitHandler}>
-            <div>
-                <label htmlFor="txtnom">Nombre</label>
-                <input type="text" id="txtnom" value={form.nombre} onChange={changeHandler} name="nombre"/>
-                {errors.nombre && <span> {errors.nombre} </span>}
+    <div className={styles.main}>
+        <div classname={styles.titulo} >
+            <h1>
+                Creacion de Receta
+            </h1>
+        </div>
+        <form onSubmit={submitHandler} className ={styles.form}>
+            <div className={styles.cajas}>
+                <div className={styles.labels} >
+                    <p><label htmlFor="txtnom">Nombre</label></p>
+                    <p><label htmlFor="txtrex" >Resumen</label></p>
+                    <p><label htmlFor="numcom" >Nivel de "Comida Saludable" </label></p>
+                    <p><label htmlFor="txtpaso" >Paso a paso</label></p>
+                </div>
+                <div className={styles.inputs}>
+                    <p>
+                        <input  className={styles.intex} type="text" id="txtnom" value={form.nombre} onChange={changeHandler} name="nombre"/>
+                    </p> 
+                    <p>
+                        <input className={styles.intex} type="text" id="txtres"value={form.resumen}onChange={changeHandler} name="resumen"/>
+                    </p>
+                    <p>
+                        <input className={styles.intex} type="number" id="numcom" min="10" max ="100" value={form.comidaSaludable}onChange={changeHandler}name="comidaSaludable"/>
+                    </p>
+                    <p>
+                        <input className={styles.intex} type="text" id="txtpaso" value={form.pasoAPaso}onChange={changeHandler}name="pasoAPaso"/>
+                    </p>
+                </div>
+                <div className={styles.mainerrors}>   
+                        <p>
+                            {errors.nombre && <span className={styles.spamerror}> {errors.nombre} </span>}
+                        </p>
+                        <p>
+                            {errors.resumen &&<span className={styles.spamerror}>{errors.resumen} </span>}
+                        </p>
+                        <p>
+                            {errors.comidaSaludable && <span className={styles.spamerror}> error comida  sal </span>}
+                        </p>
+                        <p>
+                            {errors.pasoAPaso && <span className={styles.spamerror}> error paso a pas</span>}
+                        </p>
+                </div>
+                
             </div>
-            <div>
-                <label htmlFor="txtrex" >Resumen</label>
-                <input type="text" id="txtres"value={form.resumen}onChange={changeHandler} name="resumen"/>
-                {errors.resumen &&<span>{errors.resumen} </span>}
-            </div>
-            <div>
-                <label htmlFor="numcom" >Nivel de "comida saludable" </label>
-                <input type="number" id="numcom" min="10" max ="100" value={form.comidaSaludable}onChange={changeHandler}name="comidaSaludable"/>
-            </div>
-            <div>
-                <label htmlFor="txtpaso" >Paso a paso</label>
-                <input type="text" id="txtpaso" value={form.pasoAPaso}onChange={changeHandler}name="pasoAPaso"/>
-            </div>
-            <div className={styles.chkboxs}>
+            <div className={styles.mainchks}>
                 <p>Dietas</p>
-                <div>
+                <div className={styles.chks}>
                     <input type="checkbox" id="1" name="chk1" onChange={changeChkHandler} checked={chkdietas.chk1} value="Ketogenic" />Ketogenic
                     <input type="checkbox" id="2" name="chk2" onChange={changeChkHandler} checked={chkdietas.chk2} value="Gluten_Free" />Gluten Free
                     <input type="checkbox" id="3" name="chk3" onChange={changeChkHandler} checked={chkdietas.chk3} value="Vegetarian" />Vegetarian
                     <input type="checkbox" id="4" name="chk4" onChange={changeChkHandler} checked={chkdietas.chk4} value="Lacto-Vegetarian" />Lacto-Vegetarian
                     <input type="checkbox" id="5" name="chk5" onChange={changeChkHandler}checked={chkdietas.chk5}value="Ovo-Vegetarian" />Ovo-Vegetarian
                 </div>
-                <div>
+                <div className={styles.chks}>
                     <input type="checkbox" id="6" name="chk6" onChange={changeChkHandler} checked={chkdietas.chk6} value="Vegan" />Vegan
                     <input type="checkbox" id="7" name="chk7" onChange={changeChkHandler} checked={chkdietas.chk7} value="Paleo" />Paleo
                     <input type="checkbox" id="8" name="chk8" onChange={changeChkHandler} checked={chkdietas.chk8}value="Pescetarian" />Pescetarian
@@ -123,9 +148,9 @@ return(
                 </div>
 
             </div>
-            <button type="submit">Crear Receta</button>
+            <button className={styles.bootom} type="submit">Crear Receta</button>
         </form>
-    </>
+    </div>
 
     )
 

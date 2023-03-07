@@ -42,7 +42,7 @@ const Card =(props)=>{
                             </div>
 
                             <div className={style.etiqueta} >
-                            {/* <Link to="/detail" component={{ idCard: "algo"}}>Mostrar Detalle</Link> */}
+                            <Link to={`/detail/${props.id}`} >Mostrar Detalle</Link>
                             
                             </div>
                         </div>

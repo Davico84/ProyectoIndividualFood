@@ -23,14 +23,20 @@ export const getRecetas=()=>{
     return async dispatch => {
         return fetch("http://localhost:3001/recipes/")
           .then(response => {
+            // console.log("esto es la respuesta",response);
             estado=response.status
             return response.json()
           })
           .then(json => {
-            if (estado ===400) dispatch({ type: SET_ERROR, 
-                                          payload: json });
+            if (estado ===400){
+                // console.log("me voy a SET_ERROR");
+              dispatch({ type: SET_ERROR, 
+                      payload: json });
+            } else {
+              // console.log("GET RECETAS");
             dispatch({ type: GET_RECETAS, 
                        payload: json });
+            }
           }).catch (error => {
             dispatch({ 
                 type: SET_ERROR, 
@@ -45,7 +51,7 @@ export const getRecetas=()=>{
 //     }
 // }
 export const getRecetasByWord=(word)=>{
-    return dispatch => {
+    return async dispatch => {
         return fetch(`http://localhost:3001/recipes/?word=${word}`)
           .then(response => response.json())
           .then(json => {
@@ -65,7 +71,7 @@ export const getRecetasByWord=(word)=>{
 //     }
 // }
 export const getRecetasByID=(ID)=>{
-    return dispatch => {
+    return async dispatch => {
         return fetch(`http://localhost:3001/recipes/${ID}`)
           .then(response => response.json())
           .then(json => {
@@ -81,17 +87,23 @@ export const getRecetasByID=(ID)=>{
 }
 export const getDietas=()=>{
   let estado=0;
-    return dispatch => {
+    return async dispatch => {
         return fetch("http://localhost:3001/diets/all/")
         .then(response => {
+          // console.log("esto es la respuesta",response);
           estado=response.status
           return response.json()
         })
         .then(json => {
-          if (estado ===400) dispatch({ type: SET_ERROR, 
-                                        payload: json });
-          dispatch({ type: GET_RECETAS, 
+          if (estado ===400){
+              // console.log("me voy a SET_ERROR");
+            dispatch({ type: SET_ERROR, 
+                    payload: json });
+          } else {
+            // console.log("GET DIETAS");
+          dispatch({ type: GET_DIETAS, 
                      payload: json });
+          }
         }).catch (error => {
           dispatch({ 
               type: SET_ERROR, 

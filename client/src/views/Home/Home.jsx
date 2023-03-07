@@ -10,11 +10,11 @@ const Home =()=>{
     const disptach = useDispatch();
     
     useEffect(()=>{
-        console.log("se disparo HOME");
+        // console.log("se disparo HOME");
        disptach(getRecetas());
     },[disptach])//array de deoendencias
-    
     const error=useSelector(state=>state.msgerror)
+    
     const recetas= corregirFormatoData(useSelector(state=>state.recetas))
     const pagina= useSelector(state=>state.pagina)
 	const porPagina= useSelector(state=>state.porPagina)

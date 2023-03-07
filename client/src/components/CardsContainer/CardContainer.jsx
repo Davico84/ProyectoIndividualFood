@@ -4,36 +4,41 @@ import style from "./CardContainer.module.css"
 
 const CardContainer =(props)=>{
     
+    
     if(props.error!=="NULL")
     {  
-    
+        console.log("estoy caputarndo el error????");
         return(
             <div className={style.mainContainer}>
                 <NoFoundCard error={props.error}/> 
             </div>
         ) 
-    } 
 
-	return(
-    <div className={style.mainContainer}>
-        {
-            props.recetas.slice(
-                    (props.pagina-1)*props.porPagina,
-                    (props.pagina-1)*props.porPagina+props.porPagina)
-                .map(receta=>{
-                return <Card
-                            id={receta.id}
-							key={receta.id}
-                            nombre={receta.nombre} 
-                            resumen={receta.resumen} 
-                            create ={receta.create} 
-							comidaSaludable={receta.comidaSaludable} 
-							tipoDeDieta={receta.tipoDeDieta}
-							imagen={receta.imagen}
-                        />
-            })
-        }
-    </div>
-)
-}
+    } 
+    // console.log("cargando Card Container");
+    return(
+        <div className={style.mainContainer}>
+            {
+                props.recetas.slice(
+                        (props.pagina-1)*props.porPagina,
+                        (props.pagina-1)*props.porPagina+props.porPagina)
+                    .map(receta=>{
+                    return <Card
+                                id={receta.id}
+                                key={receta.id}
+                                nombre={receta.nombre} 
+                                resumen={receta.resumen} 
+                                create ={receta.create} 
+                                comidaSaludable={receta.comidaSaludable} 
+                                tipoDeDieta={receta.tipoDeDieta}
+                                imagen={receta.imagen}
+                            />
+                })
+            }
+        </div>
+    )
+    }
+
+	
+
 export default CardContainer

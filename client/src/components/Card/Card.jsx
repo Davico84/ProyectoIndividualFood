@@ -1,4 +1,5 @@
 // import {crearTextoHtml} from "../../Utils/utils"
+import { Link} from "react-router-dom";
 import style from "./Card.module.css"
 const Card =(props)=>{
 
@@ -9,6 +10,7 @@ const Card =(props)=>{
                 <div className={style.cabTitulo}> {props.nombre}</div>
                 <div  className={style.rayaRosa}></div>
                 <div  className={style.rayaNaranja}></div>
+                
             </div>
             <div className={style.detalle}>  
                 <div className={style.imagen }>
@@ -17,29 +19,33 @@ const Card =(props)=>{
                 <div className={style.cuerpo }>
                         <div className={style.item}>
                             <div className={style.etiqueta}>
-                                <p>
+                                <div>
                                     <h2>Comida Saludable</h2>
-                                </p>
+                                </div>
                             </div>
                             <div className={style.valor1}>
-                                <><h2>
-                                    {props.comidaSaludable}
-                                </h2>
-                                </>
+                                <div>
+                                    <h2>{props.comidaSaludable}</h2>
+                                </div>
                             </div>
                         </div>
                         <div className={style.item}>
                             <div className={style.etiqueta}>
-                                <p>
+                                <div>
                                     <h2>Dietas</h2>
-                                </p>
+                                </div>
                             </div>
                             <div className={style.valor2}>
                                 <span>
                                     <h3>{props.tipoDeDieta}</h3>
                                 </span>                  
                             </div>
-                    </div>
+
+                            <div className={style.etiqueta} >
+                            {/* <Link to="/detail" component={{ idCard: "algo"}}>Mostrar Detalle</Link> */}
+                            
+                            </div>
+                        </div>
                 </div>
                 {/* <p >Resumen: 
                         <span dangerouslySetInnerHTML={crearTextoHtml(props.resumen)} />    

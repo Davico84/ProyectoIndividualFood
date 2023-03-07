@@ -19,18 +19,22 @@ export const GET_DIETAS ="GET_DIETAS";
 //     }
 // }
 export const getRecetas=()=>{
-    return dispatch => {
+    let estado=0;
+    return async dispatch => {
         return fetch("http://localhost:3001/recipes/")
-          .then(response => response.json())
+          .then(response => {
+            estado=response.status
+            return response.json()
+          })
           .then(json => {
-            dispatch({ 
-                  type: GET_RECETAS, 
-                  payload: json });
+            if (estado ===400) dispatch({ type: SET_ERROR, 
+                                          payload: json });
+            dispatch({ type: GET_RECETAS, 
+                       payload: json });
           }).catch (error => {
             dispatch({ 
                 type: SET_ERROR, 
                 payload: error.message });
-            //alert(error.message)
             })}
 }
 // export const getRecetasByWord=(word)=>{
@@ -76,19 +80,23 @@ export const getRecetasByID=(ID)=>{
             })}
 }
 export const getDietas=()=>{
+  let estado=0;
     return dispatch => {
         return fetch("http://localhost:3001/diets/all/")
-          .then(response => response.json())
-          .then(json => {
-            dispatch({ 
-                  type: GET_DIETAS, 
-                  payload: json });
-          }).catch (error => {
-            dispatch({ 
-                type: SET_ERROR, 
-                payload: error.message });
-            //alert(error.message)
-            })}
+        .then(response => {
+          estado=response.status
+          return response.json()
+        })
+        .then(json => {
+          if (estado ===400) dispatch({ type: SET_ERROR, 
+                                        payload: json });
+          dispatch({ type: GET_RECETAS, 
+                     payload: json });
+        }).catch (error => {
+          dispatch({ 
+              type: SET_ERROR, 
+              payload: error.message });
+          })}
 }
 export const setNextPage=()=>{
     return  function(dispatch){

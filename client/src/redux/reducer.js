@@ -13,8 +13,8 @@ const initialState={
 
 const rootReducer=(state=initialState,action)=>{
     switch (action.type) {
-        case GET_RECETAS: 
-            return {...state,recetas:action.payload}
+        case GET_RECETAS: {
+            return {...state,recetas:action.payload}}
         case SET_NEXT_PAGE:
             return{...state,pagina:state.pagina+1}
         case SET_PREV_PAGE:

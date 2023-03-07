@@ -86,7 +86,7 @@ const submitHandler =(event)=>{
 }
 return(
     <div className={styles.main}>
-        <div classname={styles.titulo} >
+        <div className={styles.titulo} >
             <h1>
                 Creacion de Receta
             </h1>

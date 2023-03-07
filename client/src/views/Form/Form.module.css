@@ -1,8 +1,7 @@
 .main{
     display: flex;
     flex-direction: column;
-    align-items: stretch;
-   
+    align-items: center;
     border-radius: 8px;
     margin: 5px;
 }
@@ -13,6 +12,11 @@
     width: 600px;
     border: solid orangered;
     border-radius: 8px;
+    /* background-image: url(images/cooking.png);
+    /* background-image: url(images/causa.jpg); 
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover; */
 }
 .titulo{
     display: flex;
@@ -21,6 +25,8 @@
     width: 600px;
     border: solid orangered;
     border-radius: 8px;
+    margin: 5px;
+    color: darkorange;
 }
 .cajas{
     display: flex;

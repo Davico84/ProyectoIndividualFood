@@ -1,4 +1,4 @@
-import { GET_RECETAS, SET_NEXT_PAGE ,SET_PREV_PAGE,SET_FIRST_PAGE,SET_LAST_PAGE,SET_MAX_PAGE,SET_ERROR} from "./actions";
+import { GET_RECETAS, SET_NEXT_PAGE ,SET_PREV_PAGE,SET_FIRST_PAGE,SET_LAST_PAGE,SET_MAX_PAGE,SET_ERROR,GET_DIETAS} from "./actions";
 
 const initialState={
     recetas:[],
@@ -6,7 +6,8 @@ const initialState={
     porPagina:9,
     input:1,
     maximo:0,
-    msgerror:"NULL"
+    msgerror:"NULL",
+    dietas:[]
 
 };
 
@@ -26,7 +27,8 @@ const rootReducer=(state=initialState,action)=>{
             return{...state,maximo:action.payload}
         case SET_ERROR:
             return{...state,msgerror:action.payload}
-
+        case GET_DIETAS: 
+            return {...state,dietas:action.payload}
         default:
             return {...state};
     }

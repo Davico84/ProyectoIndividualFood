@@ -26,6 +26,14 @@ const createDietTypeCtrlr=async (arr)=> {
 
     return [...dietsTypesBD]
 } 
-                            //
 
-module.exports={createDietTypeCtrlr};
+const getAllDietTypeCtrlr=async ()=> {
+     
+    const tipoDietasBD=await TipoDeDieta.findAll({
+        order: [['id', 'ASC']]});
+    if(tipoDietasBD.length===0) return {error: "no exigen registros de Tipo de Dietas en la BD"}
+    
+    return tipoDietasBD
+}                        //
+
+module.exports={createDietTypeCtrlr,getAllDietTypeCtrlr};

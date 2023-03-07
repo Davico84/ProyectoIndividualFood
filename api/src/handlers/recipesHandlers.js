@@ -38,7 +38,7 @@ const getRecipesByIdHandler= async(req,res)=>{
 // - [ ] __POST /recipes__:
 const postRecipeHandler= async(req,res)=>{
     const {nombre, resumen, comidaSaludable,pasoAPaso,TiposdeDieta}=req.body
-    
+    //console.log(req.body)
     try {
         const newRecipe= await createRecipeCtrlr(nombre, resumen, comidaSaludable,pasoAPaso,TiposdeDieta)
         

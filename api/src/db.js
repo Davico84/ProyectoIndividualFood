@@ -6,7 +6,7 @@ const path = require('path');
 
 //tipos de dietas
 const dietsTypesArr= [ 
-  {nombre:"Gluten Free" ,descripcion:"Eliminating gluten means avoiding wheat, barley, rye, and other gluten-containing grains and foods made from them (or that may have been cross contaminated)."},
+  {nombre:"Gluten_Free" ,descripcion:"Eliminating gluten means avoiding wheat, barley, rye, and other gluten-containing grains and foods made from them (or that may have been cross contaminated)."},
   {nombre:"Ketogenic" ,descripcion:"The keto diet is based more on the ratio of fat, protein, and carbs in the diet rather than specific ingredients. Generally speaking, high fat, protein-rich foods are acceptable and high carbohydrate foods are not. "},
   {nombre:"Vegetarian" ,descripcion:"No ingredients may contain meat or meat by-products, such as bones or gelatin."},
   {nombre:"Lacto-Vegetarian" ,descripcion:"All ingredients must be vegetarian and none of the ingredients can be or contain egg."},
@@ -15,7 +15,7 @@ const dietsTypesArr= [
   {nombre:"Pescetarian" ,descripcion:"Everything is allowed except meat and meat by-products - some pescetarians eat eggs and dairy, some do not."},
   {nombre:"Paleo" ,descripcion:"Allowed ingredients include meat (especially grass fed), fish, eggs, vegetables, some oils (e.g. coconut and olive oil), and in smaller quantities, fruit, nuts, and sweet potatoes. "},
   {nombre:"Primal" ,descripcion:"Very similar to Paleo, except dairy is allowed - think raw and full fat milk, butter, ghee, etc."},
-  {nombre:"Low FODMAP" ,descripcion:`FODMAP stands for "fermentable oligo-, di-, mono-saccharides and polyols". Our ontology knows which foods are considered high in these types of carbohydrates (e.g. legumes, wheat, and dairy products).`},
+  {nombre:"Low_FODMAP" ,descripcion:`FODMAP stands for "fermentable oligo-, di-, mono-saccharides and polyols". Our ontology knows which foods are considered high in these types of carbohydrates (e.g. legumes, wheat, and dairy products).`},
   {nombre:"Whole30" ,descripcion:"Allowed ingredients include meat, fish/seafood, eggs, vegetables, fresh fruit, coconut oil, olive oil, small amounts of dried fruit and nuts/seeds. "}
            ]
 

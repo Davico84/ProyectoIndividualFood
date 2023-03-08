@@ -73,16 +73,27 @@ const Form =()=>{
             if(!(`${chkdietas[property]}`==="false"))
             // console.log(`${property}: ${chkdietas[property]}`);
              arregloDietas.push((`${chkdietas[property]}`))
-          }return arregloDietas
+          }
+          return arregloDietas
+    }
+    const limpiarForm=(estado)=>{
+        for (const property in estado) {
+            console.log("propiedad",[property])
+             setForm({...[estado],[property]:""})
+            //  setErrors({...errors,nombre:""})
+          }
     }
 const submitHandler =(event)=>{
-    
+    if(form.nombre ==="" ||form.resumen ==="" ) return alert("debe registrar un nombre y resumen valido para continuar")
     form.TiposdeDieta=llenarDietas()
     event.preventDefault();
     console.log("que manda form", form)
     axios.post("http://localhost:3001/recipes/",form)
-    .then(res=>alert(res))
-    .catch(err=>alert(err))
+    .then(res=>{
+        alert("El registro fue Añadido")
+        limpiarForm(form)})
+    .catch(err=>alert("Error:",err))
+    
 }
 return(
     <div className={styles.main}>
@@ -110,7 +121,14 @@ return(
                         <input className={styles.intex} type="number" id="numcom" min="10" max ="100" value={form.comidaSaludable}onChange={changeHandler}name="comidaSaludable"/>
                     </p>
                     <p>
-                        <input className={styles.intex} type="text" id="txtpaso" value={form.pasoAPaso}onChange={changeHandler}name="pasoAPaso"/>
+                        {/* <input className={styles.intex} type="text" id="txtpaso" value={form.pasoAPaso}onChange={changeHandler}name="pasoAPaso"/> */}
+                        <textarea className={styles.memo} 
+                                      value={form.pasoAPaso}
+                                       name="pasoAPaso"
+                               onChange={changeHandler}
+                                    rows={20}
+                                    cols={40}
+                                    />    
                     </p>
                 </div>
                 <div className={styles.mainerrors}>   

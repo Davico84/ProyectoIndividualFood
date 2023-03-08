@@ -45,6 +45,8 @@
     MARGIN: 5PX;
     border: solid 2px orangered;
     border-radius: 8px;
+    height: 115px;
+    justify-content: space-around;
 }
 .chks{
     display: flex;
@@ -87,6 +89,10 @@
 .intex{
     display: flex;
     height: 17px;
+}
+.memo{
+    display: flex;
+    height: 40px;
 }
 .bootom{
     font-size: 30px;

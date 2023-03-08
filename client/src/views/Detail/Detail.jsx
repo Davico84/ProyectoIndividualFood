@@ -16,8 +16,14 @@ const Detail =()=>{
 
     },[disptach,idCard])//array de deoendencias
         
-        const receta=  corregirFormatoData(useSelector(state=>state.receta))
-    
+    const receta=  corregirFormatoData(useSelector(state=>state.receta))
+    // const formateo= crearTextoHtml(
+    //             receta.length ===0  
+    //             ?  "sin datos" :
+    //             receta[0].resumen  ) 
+    const formateo= receta.length ===0  
+                    ?  "sin datos" :
+                    receta[0].resumen   
     return(
 
         <div className={styles.main}>  
@@ -52,9 +58,11 @@ const Detail =()=>{
                     </div>
                 </div>
                 <div className={styles.cuerpoP2}>
-                    <div className={styles.cuerpo3   }>
-                   
-                    {/* <span dangerouslySetInnerHTML={`${formateo}`} />     */}
+                    
+                    <div dangerouslySetInnerHTML={{__html: formateo}} className={styles.cuerpo3   }>
+                         {/* <span className={styles.resumen} dangerouslySetInnerHTML={formateo} />  */}
+                         
+                         {/* {receta.length ===0  ?  "sin datos" :receta[0].resumen} */}
                     </div>
                 </div>
             </div>

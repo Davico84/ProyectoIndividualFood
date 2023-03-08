@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     height: 1200px;
-    width: 1570px;
+    width: 1240px;
     align-items: center;
     justify-content: space-around;
     background-color: #69ff1c;
@@ -11,21 +11,22 @@
     display: flex;
     width: 100%;
     flex-direction: column;
-    height: 12%;
+    height: 5%;
     flex-wrap: nowrap;
     background-color: bisque;
+    justify-content: flex-end;
 }
 .titulo{
     display: flex;
     flex-direction: column;
-    align-items: center;
     width: 50%;
     border: solid orangered;
-    height: 10%;
+    height: 3%;
     border-radius: 9px;
-    margin: 0px;
+    /* margin: 0px; */
     color: darkorange;
-    justify-content: space-evenly;
+    justify-content: center;
+    align-items: center;
 }
 .cabTitulo{
     display: flex;
@@ -44,22 +45,21 @@
     display: flex;
     width: 100%;
     flex-direction: row;
-    background-color: red;
+    background-color: #69ff1c;
     height: 45%;
     align-items: center;
 }
 .cuerpo1{
-    height: 60%;
     display: flex;
     width: 100%;
+    flex-direction: row;
+    background-color: red;
+    height: 40%;
     align-items: center;
     justify-content: space-around;
-    background-color: black;
-    margin: 0px;
-    padding: 5px;
 }
 .cuerpo2{
-    height: 40%;
+    height: 80%;
     display: flex;
     width: 100%;
     justify-content: space-around;
@@ -68,10 +68,9 @@
 .img_rec{
     
     border-radius: 10px;
-    width: 30%;
-    height: 95%;
+    width: 40%;
+    height: 75%;
     border-bottom-color: #FF1CA5;
-
     border: solid 5px #f7f7f7;
 }
 
@@ -80,11 +79,17 @@
     flex-direction: row;
     background-color: #ff8100;
     width: 100%;
-    height: 30%;
+    height: 50%;
     justify-content: center;
 }
 .detalle1{
     display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    /* align-content: space-around; */
+    BACKGROUND-COLOR: antiquewhite;
+    justify-content: space-evenly;
+    WIDTH: 95%;
 }
 .detalle2{
     display: flex;
@@ -124,21 +129,9 @@
     align-items: center;
     /* background-color: blue; */
     justify-content: space-evenly;
+    flex-direction: column;
 }
-.cuerpo1{
-    height: 40%;
-    display: flex;
-    width: 100%;
-    align-items: flex-start;
-    justify-content: space-around;
-}
-.cuerpo2{
-    height: 60%;
-    display: flex;
-    width: 100%;
-    justify-content: space-around;
-    align-items: center;
-}
+
 .cuerpo3{
     display: flex;
     flex-direction: column;

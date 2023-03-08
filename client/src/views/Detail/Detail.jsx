@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom'
 import { getRecetasByID} from "../../redux/actions"; 
 import { useDispatch,useSelector } from "react-redux";
 import { useEffect } from "react"; 
-import {corregirFormatoData,crearTextoHtml} from  "../../Utils/utils"
+import {corregirFormatoData} from  "../../Utils/utils"
 import styles from "./Detail.module.css"
 const Detail =()=>{
     const location = useLocation()
@@ -17,10 +17,7 @@ const Detail =()=>{
     },[disptach,idCard])//array de deoendencias
         
     const receta=  corregirFormatoData(useSelector(state=>state.receta))
-    // const formateo= crearTextoHtml(
-    //             receta.length ===0  
-    //             ?  "sin datos" :
-    //             receta[0].resumen  ) 
+ 
     const formateo= receta.length ===0  
                     ?  "sin datos" :
                     receta[0].resumen   
@@ -58,25 +55,43 @@ const Detail =()=>{
                     </div>
                 </div>
                 <div className={styles.cuerpoP2}>
-                    
+                    <div className={styles.subtitulos}>
+                            Resumen
+                    </div>
                     <div dangerouslySetInnerHTML={{__html: formateo}} className={styles.cuerpo3   }>
-                         {/* <span className={styles.resumen} dangerouslySetInnerHTML={formateo} />  */}
-                         
-                         {/* {receta.length ===0  ?  "sin datos" :receta[0].resumen} */}
+                    
                     </div>
                 </div>
             </div>
             <div className={styles.detalle}>
                 <div className={styles.detalle1   }>
-                    paso a paso
+                    {receta.length ===0  
+                    ?  "sin datos" 
+                    // :console.log(receta[0].pasoAPaso[0].steps[5].equipment[0].name  )}
+                    :console.log(receta[0].pasoAPaso[0].steps[5]  )}
+                    {receta.length ===0  
+                    ?  "sin datos" 
+                    :receta[0].pasoAPaso[0].steps.map(el=> 
+                        <div key={el.number}>{el.number} : {el.step} 
+                            <div>Equipamiento: {el.equipment.map((elem,index) =>
+                                                    <p key={elem.id}>
+                                                         {index+1}: {elem.name}
+                                                    </p>)
+                                                }
+                            </div>
+                            <div>Ingredientes: {el.ingredients.map((elem,index) =>
+                                                    <p key={elem.id}>
+                                                         {index+1}: {elem.name}
+                                                    </p>)
+                                                }
+                            </div>
+                        </div>)  }
                 </div>
-                
-
             </div>
         </div>
     
     )
-    
+    // {nukmber: 1, step: 'Rinse the cannellini beans and soak for 8 hours or overnight in several inches of water.', ingredients: Array(2), equipment: Array(0), length: {…}}
     }
     
 export default Detail;

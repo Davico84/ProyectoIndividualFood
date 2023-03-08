@@ -20,7 +20,7 @@ const corregirFormatoData=(array)=>
                     nombre: receta.nombre,
                     resumen:receta.resumen,
                     comidaSaludable: receta.comidaSaludable,
-                    // pasoAPaso: receta.pasoAPaso.map( el => el) ,
+                    pasoAPaso: receta.pasoAPaso,//revisar caso BD
                     create: receta.create,
                     tipoDeDieta: receta.tipoDeDieta.map(el=>(' "'+el.nombre+'" ')),
                      imagen:receta.imagen

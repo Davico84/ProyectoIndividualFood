@@ -7,7 +7,7 @@ const CardContainer =(props)=>{
     
     if(props.error!=="NULL")
     {  
-        console.log("estoy caputarndo el error????");
+        console.log("CAPTURANDO ERROR SERVIDOR");
         return(
             <div className={style.mainContainer}>
                 <NoFoundCard error={props.error}/> 

@@ -42,7 +42,13 @@ const Card =(props)=>{
                             </div>
 
                             <div className={style.etiqueta} >
-                            <Link to={`/detail/${props.id}`} >Mostrar Detalle</Link>
+                            {/* <Link to={`/detail/${props.id}`} >Mostrar Detalle</Link> */}
+                            <Link to={{
+                                    pathname: "/detail",
+                                    state: {
+                                    idCard: `${props.id}`,
+                                    },
+                                }}  >  Mostrar Detalle    </Link>
                             
                             </div>
                         </div>

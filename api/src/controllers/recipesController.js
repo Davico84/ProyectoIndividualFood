@@ -27,7 +27,7 @@ const cleanApi= (array)=>
                             nombre: receta.title,
                             resumen:receta.summary,
                             comidaSaludable: receta.healthScore,
-                            //pasoAPaso: receta.analyzedInstructions.map( el => el) ,
+                            pasoAPaso: receta.analyzedInstructions.map( el => el) ,
                             create: false,
                                     tipoDeDieta: receta.diets.map(el=>el),
                             imagen:receta.image

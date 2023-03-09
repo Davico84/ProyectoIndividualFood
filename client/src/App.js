@@ -1,6 +1,6 @@
 import './App.css';
 import {Route, useLocation} from "react-router-dom"
-import {Home,Landing,Form,Detail} from "./views"
+import {Home,Landing,Form,Detail,Diets} from "./views"
 
 import NavBar from './components/NavBar/NavBar';
 function App() {
@@ -14,6 +14,7 @@ function App() {
       <Route exact path="/detail" component={Detail} />
       {/* <Route exact path="/detail" render ={()=><Detail idProp="valor" />}/>{ /* Ruta y component CON prop  */ } 
       <Route exact path="/create" component={Form} />
+      <Route exact path="/diets" component={Diets} />
       <Route exact path="/home" render ={()=><Home unaProp="valor" />}/>{ /* Ruta y component CON prop  */ }
       
       

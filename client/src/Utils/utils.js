@@ -2,16 +2,18 @@
 const crearTextoHtml=(texto) =>{
     return {__html: texto};
   }
-const corregirFormatoData=(array)=>
-  array.map(receta=>{
-    if (receta.create ===false ){//API
+const corregirFormatoData=(array)=>{
+ 
+  return array.map(receta=>{
+    if (array[0].create ===false ){//API
+       
         return {    id: receta.id,
                     nombre: receta.nombre,
                     resumen:receta.resumen,
                     comidaSaludable: receta.comidaSaludable,
-                    pasoAPaso: receta.pasoAPaso.map( el => el) ,
+                    pasoAPaso: receta.pasoAPaso[0].steps.map( el => el) ,
                     create: receta.create,
-                    tipoDeDieta: receta.tipoDeDieta.map(el=>(' "'+el+'" ,')),
+                    tipoDeDieta: receta.tipoDeDieta.map(el=>el),
                     imagen:receta.imagen
                 }
     }
@@ -27,7 +29,7 @@ const corregirFormatoData=(array)=>
               }
     }
     })
-
+  }
 // const limpiaBD=(array)=>
 //   array.map(receta=>{
 //           return {   id: receta.id,

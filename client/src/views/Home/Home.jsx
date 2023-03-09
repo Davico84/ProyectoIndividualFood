@@ -3,7 +3,7 @@ import Paginado from "../../components/Paginado/Paginado";
 import { useEffect } from "react"; 
 import { useDispatch,useSelector } from "react-redux";
 import { getRecetas} from "../../redux/actions"; 
-import {corregirFormatoData} from  "../../Utils/utils"
+
 import style from "./Home.module.css"
 const Home =()=>{
     //cuando se monta, q haga el dispatch
@@ -15,7 +15,8 @@ const Home =()=>{
     },[disptach])//array de deoendencias
     const error=useSelector(state=>state.msgerror)
     
-    const recetas= corregirFormatoData(useSelector(state=>state.recetas))
+    // const recetas= corregirFormatoData(useSelector(state=>state.recetas))
+    const recetas= useSelector(state=>state.recetas)
     const pagina= useSelector(state=>state.pagina)
 	const porPagina= useSelector(state=>state.porPagina)
     const maximo=Math.ceil(recetas.length/porPagina) 

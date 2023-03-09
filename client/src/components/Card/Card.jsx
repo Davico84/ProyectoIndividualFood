@@ -10,7 +10,6 @@ const Card =(props)=>{
                 <div className={style.cabTitulo}> {props.nombre}</div>
                 <div  className={style.rayaRosa}></div>
                 <div  className={style.rayaNaranja}></div>
-                
             </div>
             <div className={style.detalle}>  
                 <div className={style.imagen }>
@@ -37,7 +36,9 @@ const Card =(props)=>{
                             </div>
                             <div className={style.valor2}>
                                 <span>
-                                    <h3>{props.tipoDeDieta}</h3>
+                                    <h3>{props.create===true ?props.tipoDeDieta.map(el =>el.nombre)
+                                                             :props.tipoDeDieta.map(el =>el)   
+                                    }</h3>
                                 </span>                  
                             </div>
 

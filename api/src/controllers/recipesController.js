@@ -81,7 +81,7 @@ const getRecipeByIdCtrlr=async (id,source)=>{
             :  await Receta.findByPk(id, {  include:{
                                                     model: TipoDeDieta, attributes:['nombre'],
                                                     through:{ attributes:[]}}});// con esto quito la tabla puente
-            return source === 'API'? cleanApi([recipe]): recipe//.getDietType();
+            return source === 'API'? cleanApi([recipe]): [recipe]//.getDietType();
     } catch (error) {
          return  {error:"el ID ingresado no obtuvo coincidencias en la API "}
     }

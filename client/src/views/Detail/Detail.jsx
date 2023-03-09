@@ -16,11 +16,11 @@ const Detail =()=>{
 
     },[disptach,idCard])//array de deoendencias
         
-    const receta=  corregirFormatoData(useSelector(state=>state.receta))
- 
-    const formateo= receta.length ===0  
-                    ?  "sin datos" :
-                    receta[0].resumen   
+   const receta=  corregirFormatoData(useSelector(state=>state.receta))
+   
+   const formateo= receta.length ===0  
+                    ?  "sin datos" 
+                    : receta[0].resumen    
     return(
 
         <div className={styles.main}>  
@@ -35,7 +35,7 @@ const Detail =()=>{
                           {receta.length ===0  ?  "sin datos" :receta[0].nombre}
                     </div>    
                     <div className={styles.cabTituloDet}>
-                       "{receta.length ===0  ?  "sin datos" :receta[0].id}"
+                       {receta.length ===0  ?  "sin datos" :receta[0].id}
                        
                     </div>
                     <div  className={styles.rayaRosa}></div>
@@ -51,12 +51,31 @@ const Detail =()=>{
                             alt={receta.length ===0  ?  "sin datos" :receta[0].nombre}/>  
                     </div>
                     <div className={styles.cuerpo2   }>
-                        campos
+                                <div>
+                                    <h2>Comida Saludable</h2>
+                                    <p className={styles.valor}>{receta.length ===0  ?  "sin datos" :receta[0].comidaSaludable}</p>
+                                </div>
+                                <div>
+                                    <h2>Tipos de Dieta</h2>
+                                    <p className={styles.valor}> {receta.length ===0  ?  "sin datos" : receta[0].create===true 
+                                                                ?receta[0].tipoDeDieta
+                                                                :receta[0].tipoDeDieta.map(elem=> elem)}
+                                    </p>
+                                </div>
+                                <div>
+                                    <h2>Data Obtenida por:</h2>
+                                    <p className={styles.valor}>{receta.length ===0  
+                                        ? "sin datos" 
+                                        : receta[0].create === false ? `"API"` : `"Base de Datos Local"`
+                                }</p>
+                                </div>
                     </div>
                 </div>
                 <div className={styles.cuerpoP2}>
                     <div className={styles.subtitulos}>
-                            Resumen
+                            <h3>
+                            Resumen    
+                            </h3>
                     </div>
                     <div dangerouslySetInnerHTML={{__html: formateo}} className={styles.cuerpo3   }>
                     
@@ -65,27 +84,33 @@ const Detail =()=>{
             </div>
             <div className={styles.detalle}>
                 <div className={styles.detalle1   }>
+                    <h3>Instrucciones:</h3>
                     {receta.length ===0  
                     ?  "sin datos" 
-                    // :console.log(receta[0].pasoAPaso[0].steps[5].equipment[0].name  )}
-                    :console.log(receta[0].pasoAPaso[0].steps[5]  )}
-                    {receta.length ===0  
-                    ?  "sin datos" 
-                    :receta[0].pasoAPaso[0].steps.map(el=> 
-                        <div key={el.number}>{el.number} : {el.step} 
-                            <div>Equipamiento: {el.equipment.map((elem,index) =>
-                                                    <p key={elem.id}>
-                                                         {index+1}: {elem.name}
-                                                    </p>)
-                                                }
-                            </div>
-                            <div>Ingredientes: {el.ingredients.map((elem,index) =>
-                                                    <p key={elem.id}>
-                                                         {index+1}: {elem.name}
-                                                    </p>)
-                                                }
-                            </div>
-                        </div>)  }
+                    : receta[0].create ===true 
+                        // ? receta[0].pasoAPaso
+                        ? receta[0].pasoAPaso
+                        : receta[0].pasoAPaso.map(el=> 
+                            <div className={styles.subDetalle1} key={el.number}>Paso  {el.number} : {el.step} 
+                                {el.equipment.length===0 ? " "
+                                    :<div className={styles.subDetalle2}>
+                                        <h4>Equipamiento:</h4> {el.equipment.map((elem,index) =>
+                                                            <p className={styles.subDetalle3} key={elem.id}>
+                                                                &nbsp;&nbsp; {index+1} : {elem.name}
+                                                            </p>)
+                                                        }
+                                    </div>
+                                }
+                                {el.ingredients.length===0 ? " "
+                                    :<div className={styles.subDetalle2}>
+                                        <h4>Ingredientes: </h4>{el.ingredients.map((elem,index) =>
+                                                            <p className={styles.subDetalle3} key={elem.id}>
+                                                            &nbsp;&nbsp;  {index+1} : {elem.name}
+                                                            </p>)
+                                                        }
+                                    </div>
+                                }
+                            </div>)  }
                 </div>
             </div>
         </div>

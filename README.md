@@ -98,10 +98,10 @@ __IMPORTANTE__: No se permitirá utilizar librerías externas para aplicar estil
 
 #### Tecnologías necesarias
 
-- [ ] React
-- [ ] Redux
-- [ ] Express
-- [ ] Sequelize - Postgres
+- [x ] React
+- [ x] Redux
+- [ x] Express
+- [ x] Sequelize - Postgres
 
 ## Frontend
 
@@ -109,19 +109,19 @@ Se debe desarrollar una aplicación de React/Redux que contenga las siguientes p
 
 __Pagina inicial__: deben armar una landing page con
 
-- [ ] Alguna imagen de fondo representativa al proyecto
-- [ ] Botón para ingresar al home (`Ruta principal`)
+- [ x] Alguna imagen de fondo representativa al proyecto
+- [ x] Botón para ingresar al home (`Ruta principal`)
 
 __Ruta principal__: debe contener
 
 - [ ] Input de búsqueda para encontrar recetas por nombre
-- [ ] Área donde se verá el listado de recetas. Deberá mostrar su:
+- [ x] Área donde se verá el listado de recetas. Deberá mostrar su:
   - Imagen
   - Nombre
   - Tipo de dieta (vegetariano, vegano, apto celíaco, etc)
 - [ ] Botones/Opciones para filtrar por por tipo de dieta
 - [ ] Botones/Opciones para ordenar tanto ascendentemente como descendentemente las recetas por orden alfabético y por health score (nivel de comida saludable).
-- [ ] Paginado para ir buscando y mostrando las siguientes recetas, 9 recetas por pagina, mostrando las primeros 9 en la primer pagina.
+- [ x] Paginado para ir buscando y mostrando las siguientes recetas, 9 recetas por pagina, mostrando las primeros 9 en la primer pagina.
 
 __IMPORTANTE__: Dentro de la Ruta Principal se deben mostrar tanto las recetas traidas desde la API como así también las de la base de datos. Debido a que en la API existen alrededor de 5 mil recetas, por cuestiones de performance pueden tomar la simplificación de obtener y paginar las primeras 100.
 
@@ -130,7 +130,7 @@ __Ruta de detalle de receta__: debe contener
 - [ ] Los campos mostrados en la ruta principal para cada receta (imagen, nombre, tipo de plato y tipo de dieta)
 - [ ] Resumen del plato
 - [ ] Nivel de "comida saludable" (health score)
-- [ ] Paso a paso
+- [ x] Paso a paso
 
 __Ruta de creación de recetas__: debe contener
 
@@ -140,7 +140,7 @@ __Ruta de creación de recetas__: debe contener
   - Nivel de "comida saludable" (health score)
   - Paso a paso
 - [ ] Posibilidad de seleccionar/agregar uno o más tipos de dietas
-- [ ] Botón/Opción para crear una nueva receta
+- [x ] Botón/Opción para crear una nueva receta
 
 > Es requisito que el formulario de creación esté validado con JavaScript y no sólo con validaciones HTML. Pueden agregar las validaciones que consideren. Por ejemplo: Que el nombre de la receta no pueda contener símbolos, que el health score no pueda exceder determinado valor, etc.
 

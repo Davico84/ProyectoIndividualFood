@@ -8,15 +8,16 @@ const Paginado = (props) => {
     const dispatch = useDispatch();
     const [filter,setFilter]=useState({
         fRecetas:[],
+        PrevRecetas:[],
         word:"",
     })
+    
+    //console.log("props.recetas",props.recetas)
     const [errors,setErrors]=useState({
         fRecetas:[],
         word:"",
     })
-    // filter.fRecetas===undefined 
-    //                     ?console.log("no se creo aun")
-    //                     :console.log("estoy hay recetas PROPS", props.recetas);
+                 
     const NextPage=()=>{
         if(props.maximo===props.pagina)return
         dispatch(setNextPage())
@@ -35,9 +36,7 @@ const Paginado = (props) => {
     const set_MaxPage=() =>{
         dispatch(setMaxPage(props.maximo))
     }
-    // const update_Recetas=() =>{
-    //     dispatch(updateRecetas(props.maximo))
-    // }
+
     const changeHandler=(event)=>{
         const property =event.target.name;
         const value= event.target.value
@@ -57,12 +56,28 @@ const Paginado = (props) => {
         // console.log("WORD q tengo", word)
         const result = props.recetas.filter(receta=> receta.nombre.toUpperCase().includes( word.toUpperCase()));
         // console.log("receta q obtengo", result)
-        setFilter({...filter,fRecetas:result})
+        setFilter({...filter,PrevRecetas:props.recetas})
         return result
     }
     const filterHandler=()=>{
+        if (filter.word==="") return  alert("Debe Ingresar al menos 1 Caracter")
         const data=filterByWord(filter.word)
         dispatch(updateRecetas(data))
+    }
+    const cleanfilterHandler=()=>{
+        
+        if(filter.PrevRecetas.length===0) {
+            alert( "Antes debes aplicar una busqueda") 
+            return
+        }
+        console.log("disparamos")
+        dispatch(updateRecetas(filter.PrevRecetas))
+    }
+    const OrderAlHandler=()=>{
+
+    }
+    const OrderHSHandler=()=>{
+        
     }
     // // const wordHandler=()
     // const getRecByWord=() =>{
@@ -83,9 +98,23 @@ const Paginado = (props) => {
             <label >Filtrar por Palabra</label>
             <input type="text" id="txtWord" value={filter.word} onChange={changeHandler} name="word"/> 
             <button onClick={filterHandler} id="cmdFiltrar" name="cmdFiltrar">Filtrar </button>
-            {errors.word && <span className={styles.spamerror}> {errors.word} </span>}
+            <span className={styles.spamerror}> {errors.word && errors.word }   </span>
+            <button onClick={cleanfilterHandler} id="cmdMostrarT" name="cmdMostrarT">Mostrar Todos </button>
         </div>
-       
+        <div className={styles.filtro}>
+            <label >Orden   Alfabetico</label>
+            <div>
+                <button onClick={OrderAlHandler} id="cmdAlfOrdenAsc" name="cmdAlfOrdenAsc">Ascendente </button>
+                <button onClick={OrderAlHandler} id="cmdAlfOrdenDes" name="cmdAlfOrdenDes">Descendente</button>
+            </div>
+        </div>
+        <div className={styles.filtro}>
+            <label >Orden   Nivel de Comida Saludable</label>
+            <div>
+                <button onClick={OrderHSHandler} id="cmdHSOrdenAsc" name="cmdHSOrdenAsc">Ascendente </button>
+                <button onClick={OrderHSHandler} id="cmdHSOrdenDes" name="cmdHSOrdenDes">Descendente</button>
+            </div>
+        </div>
 
     </div>
   )

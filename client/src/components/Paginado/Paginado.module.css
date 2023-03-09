@@ -2,14 +2,15 @@
     display: flex;
     width: 100%;
     justify-content: space-around;
-    /* font-size: 231px; */
-    /* border: solid; */
+    font-size: 231px;
+    border: solid;
     color: black 2px;
     border-radius: 7px;
-    height: 50px;
+    height: 116px;
     font-weight: 700;
     border: solid 4px;
     align-items: center;
+    flex-direction: column;
 }
 .navegacion{
     display: flex;
@@ -31,8 +32,10 @@
 .filtro{
     display: flex;
     height: 33px;
-    width: 500px;
+    width: 100%;
     font-size: 20px;
+    justify-content: flex-start;
+    align-items: center;
 }
 .spamerror{
     display: flex;

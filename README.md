@@ -114,7 +114,7 @@ __Pagina inicial__: deben armar una landing page con
 
 __Ruta principal__: debe contener
 
-- [ ] Input de búsqueda para encontrar recetas por nombre
+- [x ] Input de búsqueda para encontrar recetas por nombre
 - [ x] Área donde se verá el listado de recetas. Deberá mostrar su:
   - Imagen
   - Nombre
@@ -127,9 +127,9 @@ __IMPORTANTE__: Dentro de la Ruta Principal se deben mostrar tanto las recetas t
 
 __Ruta de detalle de receta__: debe contener
 
-- [ ] Los campos mostrados en la ruta principal para cada receta (imagen, nombre, tipo de plato y tipo de dieta)
-- [ ] Resumen del plato
-- [ ] Nivel de "comida saludable" (health score)
+- [x ] Los campos mostrados en la ruta principal para cada receta (imagen, nombre, tipo de plato y tipo de dieta)
+- [x ] Resumen del plato
+- [ x] Nivel de "comida saludable" (health score)
 - [ x] Paso a paso
 
 __Ruta de creación de recetas__: debe contener

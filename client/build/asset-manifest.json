@@ -1,22 +1,27 @@
 {
   "files": {
-    "main.css": "/static/css/main.5739ad41.chunk.css",
-    "main.js": "/static/js/main.93aed176.chunk.js",
-    "main.js.map": "/static/js/main.93aed176.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.ff538e59.js",
-    "runtime-main.js.map": "/static/js/runtime-main.ff538e59.js.map",
-    "static/js/2.4dce8201.chunk.js": "/static/js/2.4dce8201.chunk.js",
-    "static/js/2.4dce8201.chunk.js.map": "/static/js/2.4dce8201.chunk.js.map",
-    "static/js/3.9624b3b8.chunk.js": "/static/js/3.9624b3b8.chunk.js",
-    "static/js/3.9624b3b8.chunk.js.map": "/static/js/3.9624b3b8.chunk.js.map",
+    "main.css": "/static/css/main.bfc18291.chunk.css",
+    "main.js": "/static/js/main.6614c031.chunk.js",
+    "main.js.map": "/static/js/main.6614c031.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.9abe9fba.js",
+    "runtime-main.js.map": "/static/js/runtime-main.9abe9fba.js.map",
+    "static/js/2.9fc64c0e.chunk.js": "/static/js/2.9fc64c0e.chunk.js",
+    "static/js/2.9fc64c0e.chunk.js.map": "/static/js/2.9fc64c0e.chunk.js.map",
+    "static/js/3.06619c89.chunk.js": "/static/js/3.06619c89.chunk.js",
+    "static/js/3.06619c89.chunk.js.map": "/static/js/3.06619c89.chunk.js.map",
     "index.html": "/index.html",
-    "static/css/main.5739ad41.chunk.css.map": "/static/css/main.5739ad41.chunk.css.map",
-    "static/js/2.4dce8201.chunk.js.LICENSE.txt": "/static/js/2.4dce8201.chunk.js.LICENSE.txt"
+    "static/css/main.bfc18291.chunk.css.map": "/static/css/main.bfc18291.chunk.css.map",
+    "static/js/2.9fc64c0e.chunk.js.LICENSE.txt": "/static/js/2.9fc64c0e.chunk.js.LICENSE.txt",
+    "static/media/Landing.module.css": "/static/media/anticucho.95e5b30b.jpg",
+    "static/media/bonbon-four-pointed-star-1.e5995a6d.png": "/static/media/bonbon-four-pointed-star-1.e5995a6d.png",
+    "static/media/icons8-facebook.ef824524.svg": "/static/media/icons8-facebook.ef824524.svg",
+    "static/media/icons8-instagram.7b45b5c6.gif": "/static/media/icons8-instagram.7b45b5c6.gif",
+    "static/media/icons8-twitter-cuadrado.7b90f1e7.gif": "/static/media/icons8-twitter-cuadrado.7b90f1e7.gif"
   },
   "entrypoints": [
-    "static/js/runtime-main.ff538e59.js",
-    "static/js/2.4dce8201.chunk.js",
-    "static/css/main.5739ad41.chunk.css",
-    "static/js/main.93aed176.chunk.js"
+    "static/js/runtime-main.9abe9fba.js",
+    "static/js/2.9fc64c0e.chunk.js",
+    "static/css/main.bfc18291.chunk.css",
+    "static/js/main.6614c031.chunk.js"
   ]
 }

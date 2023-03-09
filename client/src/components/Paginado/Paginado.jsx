@@ -12,7 +12,6 @@ const Paginado = (props) => {
         word:"",
     })
     
-    //console.log("props.recetas",props.recetas)
     const [errors,setErrors]=useState({
         fRecetas:[],
         word:"",
@@ -43,14 +42,12 @@ const Paginado = (props) => {
         validate({...filter,[property]:value})
         setFilter({...filter,[property]:value})
     }
-    const validate=(form)=>{
+    const validate=(filter)=>{
         if(filter.word===""){
             setErrors({...errors,word:`debe ingresar caracteres de busqueda`})
-            // cmdFiltrar.enableD=false
         }
         else
             setErrors({...errors,word:""})
-
     }   
     const filterByWord=(word)=>{
         // console.log("WORD q tengo", word)
@@ -61,8 +58,8 @@ const Paginado = (props) => {
     }
     const filterHandler=()=>{
         if (filter.word==="") return  alert("Debe Ingresar al menos 1 Caracter")
-        const data=filterByWord(filter.word)
-        dispatch(updateRecetas(data))
+        const result=filterByWord(filter.word)
+        dispatch(updateRecetas(result))
     }
     const cleanfilterHandler=()=>{
         
@@ -70,20 +67,52 @@ const Paginado = (props) => {
             alert( "Antes debes aplicar una busqueda") 
             return
         }
-        console.log("disparamos")
+        console.log("Limpiamos")
+        setFilter({...filter,word:""})
         dispatch(updateRecetas(filter.PrevRecetas))
     }
-    const OrderAlHandler=()=>{
-
+    const sortByButton=(property)=>{
+        let result=[]
+        switch (property) {
+            case "cmdAlfAsc":
+                result = props.recetas.sort((a, b) => {
+                    return a.nombre > b.nombre;
+                });
+                break;
+            case "cmdAlfDes":
+                result = props.recetas.sort((a, b) => {
+                    return a.nombre < b.nombre;
+                }); 
+                break;
+            case "cmdHSAsc":
+                result = props.recetas.sort((a, b) => {
+                     return a.comidaSaludable - b.comidaSaludable;
+                }); 
+                break;
+            case "cmdHSDes":
+                result = props.recetas.sort((a, b) => {
+                    return b.comidaSaludable -a.comidaSaludable;
+                }); 
+                break;    
+            default:
+                break;
+        }
+        // setFilter({...filter,PrevRecetas:props.recetas})
+        return result;
     }
-    const OrderHSHandler=()=>{
+    
+    const OrderAlHandler=(event)=>{
+        const property =event.target.name;
         
+        const result=sortByButton(property)
+        
+        // console.log(`result ordenado x ${property}`,result)
+        dispatch(updateRecetas(result))
+        dispatch(setNextPage())
+        dispatch(setPrevPage())
     }
-    // // const wordHandler=()
-    // const getRecByWord=() =>{
-    //     dispatch(setMaxPage(props.maximo))
-    // }
-   
+
+
   return (
     <div className={styles.main}>
         <div className={styles.navegacion}>
@@ -104,15 +133,15 @@ const Paginado = (props) => {
         <div className={styles.filtro}>
             <label >Orden   Alfabetico</label>
             <div>
-                <button onClick={OrderAlHandler} id="cmdAlfOrdenAsc" name="cmdAlfOrdenAsc">Ascendente </button>
-                <button onClick={OrderAlHandler} id="cmdAlfOrdenDes" name="cmdAlfOrdenDes">Descendente</button>
+                <button onClick={OrderAlHandler} id="cmdAlfAsc" name="cmdAlfAsc">Ascendente </button>
+                <button onClick={OrderAlHandler} id="cmdAlfDes" name="cmdAlfDes">Descendente</button>
             </div>
         </div>
         <div className={styles.filtro}>
             <label >Orden   Nivel de Comida Saludable</label>
             <div>
-                <button onClick={OrderHSHandler} id="cmdHSOrdenAsc" name="cmdHSOrdenAsc">Ascendente </button>
-                <button onClick={OrderHSHandler} id="cmdHSOrdenDes" name="cmdHSOrdenDes">Descendente</button>
+                <button onClick={OrderAlHandler} id="cmdHSAsc" name="cmdHSAsc">Ascendente </button>
+                <button onClick={OrderAlHandler} id="cmdHSDes" name="cmdHSDes">Descendente</button>
             </div>
         </div>
 

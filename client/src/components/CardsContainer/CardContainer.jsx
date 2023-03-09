@@ -15,12 +15,13 @@ const CardContainer =(props)=>{
         ) 
 
     } 
-    // console.log("cargando Card Container");
-    
+  
     return(
         <div className={style.mainContainer}>
-            {
-                props.recetas.slice(
+            {   
+             props.recetas.length ===0 
+                ?  <NoFoundCard error={{error:"No se encontraron Resultados"}}/>
+                : props.recetas.slice(
                         (props.pagina-1)*props.porPagina,
                         (props.pagina-1)*props.porPagina+props.porPagina)
                     .map(receta=>{
@@ -35,6 +36,7 @@ const CardContainer =(props)=>{
                                 imagen={receta.imagen}
                             />
                 })
+                
             }
         </div>
     )

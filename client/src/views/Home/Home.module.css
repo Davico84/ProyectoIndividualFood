@@ -8,11 +8,12 @@
 }
 .filtros{
     display: flex;
-    
-    align-content: center;
     width: 100%;
-    justify-content: center;
     flex-direction: row;
+    height: 171px;
+    /* margin: 0px; */
+    /* background-color: antiquewhite; */
+    align-items: flex-start;
 }
 .tarjetas{
     display: flex;

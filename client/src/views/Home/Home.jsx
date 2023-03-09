@@ -11,7 +11,7 @@ const Home =()=>{
     const disptach = useDispatch();
     
     useEffect(()=>{
-    //    console.log("se disparo HOME");
+        // console.log("se disparo HOME");
        disptach(getRecetas());
 
     },[disptach])//array de deoendencias

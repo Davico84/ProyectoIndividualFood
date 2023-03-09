@@ -78,7 +78,7 @@ const Form =()=>{
     }
     const limpiarForm=(estado)=>{
         for (const property in estado) {
-            console.log("propiedad",[property])
+            // console.log("propiedad",[property])
              setForm({...[estado],[property]:""})
             //  setErrors({...errors,nombre:""})
           }
@@ -87,7 +87,7 @@ const submitHandler =(event)=>{
     if(form.nombre ==="" ||form.resumen ==="" ) return alert("debe registrar un nombre y resumen valido para continuar")
     form.TiposdeDieta=llenarDietas()
     event.preventDefault();
-    console.log("que manda form", form)
+    // console.log("que manda form", form)
     axios.post("http://localhost:3001/recipes/",form)
     .then(res=>{
         alert("El registro fue Añadido")

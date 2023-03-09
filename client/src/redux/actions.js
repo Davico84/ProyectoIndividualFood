@@ -147,6 +147,7 @@ export const setMaxPage=(maximo)=>{
     }
 }
 export const updateRecetas=(data)=>{
+  
    return  function(dispatch){
           dispatch({type: UPDATE_RECETAS,payload:data})
 }

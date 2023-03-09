@@ -10,6 +10,7 @@ export const SET_LAST_PAGE="SET_LAST_PAGE"
 export const SET_MAX_PAGE="SET_MAX_PAGE"
 export const SET_ERROR ="SET_ERROR";
 export const GET_DIETAS ="GET_DIETAS";
+export const UPDATE_RECETAS="UPDATE_RECETAS";
 // export const getRecetas=()=>{
 //     return async function(dispatch){
 //                 const dataBackend= await axios.get("http://localhost:3001/recipes/");
@@ -144,4 +145,9 @@ export const setMaxPage=(maximo)=>{
     return  function(dispatch){
            dispatch({type: SET_MAX_PAGE,payload:maximo})
     }
+}
+export const updateRecetas=(data)=>{
+   return  function(dispatch){
+          dispatch({type: UPDATE_RECETAS,payload:data})
+}
 }

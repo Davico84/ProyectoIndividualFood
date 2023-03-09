@@ -16,6 +16,7 @@ const CardContainer =(props)=>{
 
     } 
     // console.log("cargando Card Container");
+    
     return(
         <div className={style.mainContainer}>
             {

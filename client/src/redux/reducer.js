@@ -1,4 +1,4 @@
-import { GET_RECETA_BY_ID,GET_RECETAS, SET_NEXT_PAGE ,SET_PREV_PAGE,SET_FIRST_PAGE,SET_LAST_PAGE,SET_MAX_PAGE,SET_ERROR,GET_DIETAS} from "./actions";
+import {UPDATE_RECETAS,GET_RECETA_BY_ID,GET_RECETAS, SET_NEXT_PAGE ,SET_PREV_PAGE,SET_FIRST_PAGE,SET_LAST_PAGE,SET_MAX_PAGE,SET_ERROR,GET_DIETAS} from "./actions";
 
 const initialState={
     recetas:[],
@@ -30,8 +30,10 @@ const rootReducer=(state=initialState,action)=>{
             return{...state,maximo:action.payload}
         case SET_ERROR:
             return{...state,msgerror:action.payload}
-        case GET_DIETAS: 
+        case GET_DIETAS:    
             return {...state,dietas:action.payload}
+        case UPDATE_RECETAS: 
+            return {...state,recetas:action.payload}
         default:
             return {...state};
     }

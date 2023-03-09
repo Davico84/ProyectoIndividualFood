@@ -14,7 +14,7 @@
 .navegacion{
     display: flex;
     flex-direction: row;
-    width: 500px;
+    width: 250px;
     justify-content: space-between;
     height: 40px;
     align-items: center;
@@ -31,6 +31,15 @@
 .filtro{
     display: flex;
     height: 33px;
-    width: 356px;
+    width: 500px;
     font-size: 20px;
+}
+.spamerror{
+    display: flex;
+    color: red;
+    font-weight: 700;
+    font-size: 10px;
+    margin: 3px;
+    padding: 0px;
+    justify-content: flex-start;
 }

@@ -43,13 +43,7 @@ export const getRecetas=()=>{
                 payload: error.message });
             })}
 }
-// export const getRecetasByWord=(word)=>{
-//     return async function(dispatch){
-//         const dataBackend= await axios.get(`http://localhost:3001/recipes/?word=${word}`);
-//         const receta=dataBackend.data;
-//            dispatch({type: GET_RECETAS,payload: receta})
-//     }
-// }
+
 export const getRecetasByWord=(word)=>{
     return async dispatch => {
         return fetch(`http://localhost:3001/recipes/?word=${word}`)
@@ -76,13 +70,6 @@ export const getRecetasByWord=(word)=>{
 
 }
 
-// export const getRecetasByID=(ID)=>{
-//     return async function(dispatch){
-//         const dataBackend= await axios.get(`http://localhost:3001/recipes/${ID}`);
-//         const receta=dataBackend.data;
-//            dispatch({type: GET_RECETAS,payload: receta})
-//     }
-// }
 export const getRecetasByID=(ID)=>{
     return async dispatch => {
         return fetch(`http://localhost:3001/recipes/${ID}`)

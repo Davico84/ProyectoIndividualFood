@@ -27,14 +27,12 @@ const Home =()=>{
             </div>
             <div className={style.detalle}>
                 <div className={style.filtros}>
-                          <Paginado pagina={pagina} maximo={maximo}/>
+                        <Paginado pagina={pagina} maximo={maximo} recetas={recetas}/>
                 </div>
                 <div className={style.tarjetas}>
-                    <CardContainer recetas={recetas} porPagina={porPagina} pagina={pagina} error={error} />
+                        <CardContainer recetas={recetas} porPagina={porPagina} pagina={pagina} error={error} />
                 </div>
             </div>  
-            
-
         </div>
     )
 }

@@ -2,7 +2,7 @@
 import Paginado from "../../components/Paginado/Paginado";
 import { useEffect } from "react"; 
 import { useDispatch,useSelector } from "react-redux";
-import { getRecetas} from "../../redux/actions"; 
+import { getRecetas,getDietas} from "../../redux/actions"; 
 import CardContainer from "../../components/CardsContainer/CardContainer"
 import style from "./Home.module.css"
 const Home =()=>{
@@ -22,10 +22,18 @@ const Home =()=>{
     const pagina= useSelector(state=>state.pagina)
 	const porPagina= useSelector(state=>state.porPagina)
     const maximo=Math.ceil(recetas.length/porPagina) 
+
+    const clickhandler=()=>{
+        disptach(getDietas())
+    }
+
     return (
         <div className={style.main}>
              <div className={style.cabecera}>
                 <h1>Recetas</h1>
+                <div>
+                    <button  onClick={clickhandler}>Botton</button> 
+                </div>
             </div>
             <div className={style.detalle}>
                 <div className={style.filtros}>

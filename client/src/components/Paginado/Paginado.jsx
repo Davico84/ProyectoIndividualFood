@@ -50,9 +50,9 @@ const Paginado = (props) => {
             setErrors({...errors,word:""})
     }   
     const filterByWord=(word)=>{
-        // console.log("WORD q tengo", word)
+        
         const result = props.recetas.filter(receta=> receta.nombre.toUpperCase().includes( word.toUpperCase()));
-        // console.log("receta q obtengo", result)
+        
         setFilter({...filter,PrevRecetas:props.recetas})
         return result
     }

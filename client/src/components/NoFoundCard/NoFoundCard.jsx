@@ -5,7 +5,7 @@ const NoFoundCard = (props) => {
   return (
     <div>
       <div className={styles.titulo}>
-            ERROR :
+            ERROR DETECTADO EN SERVIDOR
       </div>
       <div className={styles.detalle}>{props.error.error}
       </div>

@@ -15,20 +15,20 @@ const Form =()=>{
 
     // const arrdietas=  (useSelector(state=>state.dietas))
     // // console.log("arrdietas  q fue?", arrdietas);
-    const [form,setForm]= useState({
-        nombre:"",
-        resumen:"",
-        comidaSaludable:"",
-        pasoAPaso:"",
-        TiposdeDieta:[]
-    })
-    const [errors,setErrors]= useState({
-        nombre:"",
-        resumen:"",
-        comidaSaludable:"",
-        pasoAPaso:"",
-        TiposdeDieta:[]
-    })
+    // const [form,setForm]= useState({
+    //     nombre:"",
+    //     resumen:"",
+    //     comidaSaludable:"",
+    //     pasoAPaso:"",
+    //     TiposdeDieta:[]
+    // })
+    // const [errors,setErrors]= useState({
+    //     nombre:"",
+    //     resumen:"",
+    //     comidaSaludable:"",
+    //     pasoAPaso:"",
+    //     TiposdeDieta:[]
+    // })
     const [chkdietas,setChkdietas]= useState({
         chk1: false,
         chk2: false,
@@ -55,7 +55,7 @@ const Form =()=>{
         setChkdietas({...chkdietas,[property]:value})
     }
     const validate=(form)=>{
-        if(form.nombre.length<=3){
+        if(form.nombre.length<=2){
             setErrors({...errors,nombre:`Campo "Nombre" Requerido`})
         }
         else

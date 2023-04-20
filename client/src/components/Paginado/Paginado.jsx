@@ -95,6 +95,7 @@ const Paginado = (props) => {
                 }); 
                 break;    
             default:
+                console.log("entre default");
                 break;
         }
         // setFilter({...filter,PrevRecetas:props.recetas})

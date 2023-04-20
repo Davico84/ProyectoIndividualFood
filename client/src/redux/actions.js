@@ -22,7 +22,7 @@ export const UPDATE_RECETAS="UPDATE_RECETAS";
 let estado=0;
 export const getRecetas=()=>{
     return async dispatch => {
-        return fetch("http://localhost:3001/recipes/")
+        return fetch("http://localhost:3002/recipes/")
           .then(response => {
             // console.log("esto es la respuesta",response);
             estado=response.status
@@ -47,7 +47,7 @@ export const getRecetas=()=>{
 
 export const getRecetasByWord=(word)=>{
     return async dispatch => {
-        return fetch(`http://localhost:3001/recipes/?word=${word}`)
+        return fetch(`http://localhost:3002/recipes/?word=${word}`)
         .then(response => {
           // console.log("esto es la respuesta",response);
           estado=response.status
@@ -73,7 +73,7 @@ export const getRecetasByWord=(word)=>{
 
 export const getRecetasByID=(ID)=>{
     return async dispatch => {
-        return fetch(`http://localhost:3001/recipes/${ID}`)
+        return fetch(`http://localhost:3002/recipes/${ID}`)
         .then(response => {
           // console.log("esto es la respuesta",response);
           estado=response.status
@@ -98,7 +98,7 @@ export const getRecetasByID=(ID)=>{
 export const getDietas=()=>{
   let estado=0;
     return async dispatch => {
-        return fetch("http://localhost:3001/diets/all/")
+        return fetch("http://localhost:3002/diets/all/")
         .then(response => {
           // console.log("esto es la respuesta",response);
           estado=response.status

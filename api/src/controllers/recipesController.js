@@ -4,23 +4,7 @@ const axios= require("axios");
 const {Op } = require('sequelize');
 const {Receta,TipoDeDieta}= require("../db");
 
-// const cleanArray= (array, vista)=>
-//          array.map(receta=>{
-//             if (vista==="SIMPLE" )
-//                 return {    id: receta.id,
-//                             nombre: receta.title,
-//                             resumen: receta.summary,
-//                             create: false
-//                         }
-//             else return {   id: receta.id,
-//                             nombre: receta.title,
-//                             resumen:receta.summary,
-//                             comidaSaludable: receta.healthScore,
-//                             //pasoAPaso: receta.analyzedInstructions.map( el => el) ,
-//                             create: false,
-//                             tipoDeDieta: receta.diets.map(el=>el),
-//                         }
-// })
+
 const cleanApi= (array)=>
     array.map(receta=>{
                  return {   id: receta.id,
@@ -29,7 +13,7 @@ const cleanApi= (array)=>
                             comidaSaludable: receta.healthScore,
                             pasoAPaso: receta.analyzedInstructions.map( el => el) ,
                             create: false,
-                                    tipoDeDieta: receta.diets.map(el=>el),
+                            tipoDeDieta: receta.diets.map(el=>el),
                             imagen:receta.image
                         }
                     })

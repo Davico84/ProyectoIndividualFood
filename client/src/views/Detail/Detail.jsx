@@ -11,7 +11,7 @@ const Detail =()=>{
     const disptach = useDispatch();
 
     useEffect( ()=>{
-        //console.log("Se disparo en FORM");
+        console.log("Se disparo en DETAIL");
          disptach(getRecetasByID(idCard));
 
     },[disptach,idCard])//array de deoendencias

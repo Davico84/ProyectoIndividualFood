@@ -35,13 +35,9 @@ const CardContainer =(props)=>{
                                 tipoDeDieta={receta.tipoDeDieta}
                                 imagen={receta.imagen}
                             />
-                })
-                
+                })        
             }
         </div>
     )
     }
-
-	
-
 export default CardContainer

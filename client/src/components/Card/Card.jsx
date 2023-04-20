@@ -13,6 +13,7 @@ const Card =(props)=>{
             </div>
             <div className={style.detalle}>  
                 <div className={style.imagen }>
+                    
                     <img className={style.img_rec} src={props.imagen} alt={props.nombre}/>
                 </div>
                 <div className={style.cuerpo }>

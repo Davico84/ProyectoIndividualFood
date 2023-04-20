@@ -16,8 +16,8 @@ const Landing =()=>{
                         </div>
                         <Link to="/home"><p className ={styles.navmenu1}>Home </p></Link> 
                         <Link to="/create"><p className ={styles.navmenu2}>Create </p></Link> 
-                        <Link to="/home"><p className ={styles.navmenu3}>Contacto </p></Link> 
-                        <Link to="/home"><p className ={styles.navmenu4}>Acerca de. </p></Link> 
+                        <Link to="/contacto"><p className ={styles.navmenu3}>Contacto </p></Link> 
+                        <Link to="/acerca"><p className ={styles.navmenu4}>Acerca de. </p></Link> 
                         
                         <p className ={styles.titulo1}>Recetario  </p>  
                         <p className ={styles.titulo2}> Virtual </p>  
